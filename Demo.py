@@ -52,7 +52,10 @@ try:
 
         end_time = execute_query(cursor[i], query, display_results = False, display_query = (i == 0), return_time = True)
 
-        print("Test", i, (end_time - start_time) / 1000 /1000, 'ms')
+        if (i == 0):
+            print("Full Dataset\t", (end_time - start_time) / 1000 /1000, 'ms')
+        if (i == 1):
+            print("Partial Dataset\t", (end_time - start_time) / 1000 /1000, 'ms')
 
         db[i].commit()	#save changes to DB
 
