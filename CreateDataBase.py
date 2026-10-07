@@ -1,6 +1,11 @@
 import sqlite3, os, time
 import pandas as pd
 
+delete = 0
+
+# If the table exists, the program will fail and delete the one already found
+# Just re-run. Will come up with a better solution later.
+
 def load_data(db, table_name, file):
     df = pd.read_csv(file)
     df.to_sql(table_name, db, if_exists="replace", index=False) 
@@ -13,13 +18,61 @@ try:
     load_data(db, "tracks", "Data/tracks.csv")
     load_data(db, "track_attributes", "Data/track_attributes.csv")
     
-    #create the Listen relation
-    #create the user and so on relations
-
+    cursor.execute(
+        '''
+        CREATE TABLE users (
+            ID INTEGER PRIMARY KEY,
+            name VARCHARACTER(20)
+            );
+        ''')
+    
+    cursor.execute(
+        '''
+        CREATE TABLE artist (
+            ID INTEGER PRIMARY KEY,
+            num_listeners INTEGER,
+            num_tracks INTEGER,
+            num_albums INTEGER,
+            time_listened INTEGER
+            );
+        ''')
+    
+    cursor.execute(
+        '''
+        CREATE TABLE listener (
+            ID INTEGER PRIMARY KEY,
+            age INTEGER
+            );
+        ''')
+    
+    cursor.execute(
+        '''
+        CREATE TABLE admin (
+            ID INTEGER PRIMARY KEY,
+            rank VARCHARACTER(20)
+            );
+        ''')
+    
+    cursor.execute(
+        '''
+        CREATE TABLE listen (
+            TRACKID INTEGER,
+            USERID INTEGER,
+            listen_count INTEGER,
+            favorite INTEGER,
+            
+            PRIMARY KEY (TRACKID, USERID)
+            );
+        ''')
+    
     db.commit()	#save changes to DB
 
 except sqlite3.Error as e:
     print(f"An error occurred: {e}")
+    delete = 1
 
 finally:
     db.close()
+
+    if delete == 1:
+        os.remove("music.db")
