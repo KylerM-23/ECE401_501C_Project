@@ -21,7 +21,7 @@ try:
     cursor.execute(
         '''
         CREATE TABLE users (
-            ID INTEGER PRIMARY KEY,
+            ID INTEGER PRIMARY KEY NOT NULL,
             name VARCHARACTER(20)
             );
         ''')
@@ -29,39 +29,47 @@ try:
     cursor.execute(
         '''
         CREATE TABLE artist (
-            ID INTEGER PRIMARY KEY,
+            ID INTEGER PRIMARY KEY NOT NULL,
             num_listeners INTEGER,
             num_tracks INTEGER,
             num_albums INTEGER,
-            time_listened INTEGER
+            time_listened INTEGER,
+            
+            FOREIGN KEY (ID) REFERENCES users(ID)
             );
         ''')
     
     cursor.execute(
         '''
         CREATE TABLE listener (
-            ID INTEGER PRIMARY KEY,
-            age INTEGER
+            ID INTEGER PRIMARY KEY NOT NULL,
+            age INTEGER NOT NULL,
+            
+            FOREIGN KEY (ID) REFERENCES users(ID)
             );
         ''')
     
     cursor.execute(
         '''
         CREATE TABLE admin (
-            ID INTEGER PRIMARY KEY,
-            rank VARCHARACTER(20)
+            ID INTEGER PRIMARY KEY NOT NULL,
+            rank VARCHARACTER(20),
+            
+            FOREIGN KEY (ID) REFERENCES users(ID)
             );
         ''')
     
     cursor.execute(
         '''
         CREATE TABLE listen (
-            TRACKID INTEGER,
-            USERID INTEGER,
+            TRACKID INTEGER NOT NULL,
+            USERID INTEGER NOT NULL,
             listen_count INTEGER,
             favorite INTEGER,
             
-            PRIMARY KEY (TRACKID, USERID)
+            PRIMARY KEY (TRACKID, USERID),
+            FOREIGN KEY (TRACKID) REFERENCES tracks(track_id)
+            FOREIGN KEY (USERID) REFERENCES users(ID)
             );
         ''')
     
