@@ -1,77 +1,66 @@
 import sqlite3, os, time
 import pandas as pd
+from CreateTables import *
+from GetArtists import *
 
 delete = 0
 
 # If the table exists, the program will fail and delete the one already found
 # Just re-run. Will come up with a better solution later.
 
-def load_data(db, table_name, file):
-    df = pd.read_csv(file)
-    df.to_sql(table_name, db, if_exists="replace", index=False) 
-
 try:
+    if os.path.isfile("music.db"):
+        os.remove("music.db")
+        
     db = sqlite3.connect("music.db") #Open/create database file
 
     cursor = db.cursor()   #Create a cursor object to execute SQL commands
 
-    load_data(db, "tracks", "Data/tracks.csv")
-    load_data(db, "track_attributes", "Data/track_attributes.csv")
+    load_data(db, "songs", "Data/songs.csv")
+    
+    db.commit()	#save changes to DB
+    
+    #SQLITE does not allow for tables to add new constraints for primary keys
+    #Need to recreate the tables and add constraints. :(
+    
+    create_tables(cursor)
+    
+    seperate_track_artists(cursor)
     
     cursor.execute(
         '''
-        CREATE TABLE users (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            name VARCHARACTER(20)
-            );
+        INSERT INTO track_genre(track_id, track_genre)   
+        
+        SELECT DISTINCT track_id, track_genre
+        FROM songs
+        GROUP BY track_id;
         ''')
     
     cursor.execute(
         '''
-        CREATE TABLE artist (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            num_listeners INTEGER,
-            num_tracks INTEGER,
-            num_albums INTEGER,
-            time_listened INTEGER,
+        INSERT INTO tracks (track_id, album_name, track_name, popularity,
+            duration_ms, explicit)
             
-            FOREIGN KEY (ID) REFERENCES users(ID)
-            );
-        ''')
+        SELECT DISTINCT track_id, album_name, track_name, popularity,
+            duration_ms, explicit
+        FROM songs
+        WHERE album_name IS NOT NULL
+        GROUP BY track_id;
+        ''')       
     
     cursor.execute(
         '''
-        CREATE TABLE listener (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            age INTEGER NOT NULL,
-            
-            FOREIGN KEY (ID) REFERENCES users(ID)
-            );
+        INSERT INTO track_attributes (track_id, danceability, energy, key, loudness, mode,
+            speechiness, acousticness, instrumentalness, liveness, valence, tempo,
+            time_signature)
+        
+        SELECT DISTINCT track_id, danceability, energy, key, loudness, mode, speechiness, acousticness,
+            instrumentalness, liveness, valence, tempo, time_signature
+        FROM songs
+        GROUP BY track_id;
         ''')
     
-    cursor.execute(
-        '''
-        CREATE TABLE admin (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            rank VARCHARACTER(20),
-            
-            FOREIGN KEY (ID) REFERENCES users(ID)
-            );
-        ''')
     
-    cursor.execute(
-        '''
-        CREATE TABLE listen (
-            TRACKID INTEGER NOT NULL,
-            USERID INTEGER NOT NULL,
-            listen_count INTEGER,
-            favorite INTEGER,
-            
-            PRIMARY KEY (TRACKID, USERID),
-            FOREIGN KEY (TRACKID) REFERENCES tracks(track_id)
-            FOREIGN KEY (USERID) REFERENCES users(ID)
-            );
-        ''')
     
     db.commit()	#save changes to DB
 

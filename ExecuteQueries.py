@@ -1,4 +1,4 @@
-import sqlite3, os
+import sqlite3, os, time
 
 def execute_query_timed(cursor, query, display_query = True, display_results = True, return_time = False):
     cursor.execute(query)
@@ -35,7 +35,16 @@ try:
             WHERE artists = "AC/DC"
             """
     
-    execute_query(cursor, query, display_results = True, display_query = True)
+    sum_ = 0
+    
+    loop = 100
+    
+    for i in range(loop):
+        base_time = time.perf_counter_ns()
+        end_time = execute_query_timed(cursor, query, return_time = True, display_results = False, display_query = False)
+        sum_+=((end_time - base_time) / 1000 / 1000)    
+    
+    print(f"Execution Time: {sum_ / loop}ms")
     db.commit()	#save changes to DB
 
 except sqlite3.Error as e:
