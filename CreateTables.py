@@ -103,13 +103,13 @@ def create_tables(cursor):
     cursor.execute(
         '''
         CREATE TABLE listen (
-            TRACKID INTEGER NOT NULL,
-            USERID INTEGER NOT NULL,
+            track_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
             listen_count INTEGER,
             favorite INTEGER,
             
-            PRIMARY KEY (TRACKID, USERID),
-            FOREIGN KEY (TRACKID) REFERENCES tracks(track_id)
-            FOREIGN KEY (USERID) REFERENCES users(ID)
+            PRIMARY KEY (track_id, user_id),
+            FOREIGN KEY (track_id) REFERENCES tracks(track_id)
+            FOREIGN KEY (user_id) REFERENCES users(ID)
             );
         ''')

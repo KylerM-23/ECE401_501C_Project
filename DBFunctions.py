@@ -20,11 +20,19 @@ def find_track_ID(cursor, track_name, album_name = None, artist_name = None):
         predicate = predicate + f" AND album_name = '{album_name}'"
         
     if artist_name is not None:
-        predicate = predicate + f" AND artists = '{artist_name}'"
+        query = f"""
+            WITH artist_temp(track_id) AS (
+                SELECT DISTINCT track_id
+                FROM track_artist
+                WHERE artist = """ + "'" + artist_name + "')" + f"""
+            
+            SELECT DISTINCT track_id
+            FROM tracks JOIN artist_temp USING (track_id)""" + predicate + ";"
 
-    query = f"""
-        SELECT DISTINCT track_id
-        FROM tracks""" + predicate + ";"
+    else:
+        query = f"""
+            SELECT DISTINCT track_id
+            FROM tracks """ + predicate + ";"
         
     exeute_query(cursor, query)
     tracks = cursor.fetchall()
@@ -32,8 +40,12 @@ def find_track_ID(cursor, track_name, album_name = None, artist_name = None):
     if (len(tracks) > 0):
         if (len(tracks) > 1):
             print("Multiple Tracks returned. Returning the first result.")
+            print(query)
+            
         return tracks[0][0]
     else:
+        print("No tracks found")
+        print(query)
         return None
         
     
