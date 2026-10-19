@@ -12,6 +12,14 @@ def exeute_query(cursor, query, print_query = False):
         
     return
 
+def get_artists(cursor):
+    query = f"""
+            SELECT DISTINCT artist
+            FROM track_artist"""
+        
+    exeute_query(cursor, query)
+    return cursor.fetchall()
+
 def find_track_ID(cursor, track_name, album_name = None, artist_name = None):
     
     predicate = f" WHERE track_name = '{track_name}'"

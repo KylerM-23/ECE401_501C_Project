@@ -35,7 +35,7 @@ try:
             WHERE artist = "AC/DC"
             """
     
-    loop = 100
+    loop = 1000
     
     sum_ = 0
     
@@ -62,8 +62,8 @@ try:
         end_time = execute_query_timed(cursor, query, return_time = True, display_results = False, display_query = False)
         sum_+=((end_time - base_time) / 1000 / 1000)
     
-    print(query)
-    print(f"Execution Time: {sum_ / loop}ms")
+    #print(query)
+    #print(f"Execution Time: {sum_ / loop}ms")
     
     
     db.commit()	#save changes to DB
