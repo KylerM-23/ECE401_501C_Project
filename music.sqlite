@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="music.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1656"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="admin" custom_title="0" dock_id="1" table="4,5:mainadmin"/><dock_state state="000000ff00000000fd00000001000000020000013a0000030cfc0100000001fb000000160064006f0063006b00420072006f007700730065003101000000000000013a0000015c00ffffff0000013a0000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="admin" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="34"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">--	Total Minutes and Total Plays
+--EXPLAIN QUERY PLAN
+--used to determine rows scaned
+--returned SCAN t, so goes through all 
+--89740 rows in tracks
+SELECT 
+	ROUND(SUM(t.duration_ms) / 60000.0, 1) AS total_minutes,
+	SUM(l.listen_count) AS total_plays
+FROM listen l 
+JOIN tracks t ON t.track_id = l.track_id
+WHERE l.user_id = 398943;
+
+
+-- Total genres listened to 
+--EXPLAIN QUERY PLAN
+--returned SCAN tg
+SELECT COUNT(DISTINCT tg.track_genre) AS total_genres
+FROM listen l
+JOIN track_genre tg ON tg.track_id = l.track_id
+WHERE l.user_id = 398943;
+
+
+-- Now list the top 5 genres
+--EXPLAIN QUERY PLAN
+--SCAN tg
+SELECT tg.track_genre,SUM(l.listen_count) AS plays
+FROM listen l
+JOIN track_genre tg ON tg.track_id = l.track_id
+WHERE l.user_id = 398943
+GROUP BY tg.track_genre
+ORDER BY plays DESC, tg.track_genre ASC
+LIMIT 5;
+
+
+-- Avg listens per track
+SELECT ROUND(AVG(l.listen_count), 2) AS avg_listens_per_track
+FROM listen l
+WHERE l.user_id = 398943;
+
+
+-- Avg track length (weighted by plays, calculated in minutes)
+SELECT ROUND(SUM(t.duration_ms * l.listen_count) / SUM(l.listen_count) / 60000.0, 2) AS avg_track_minutes
+FROM listen l
+JOIN tracks t ON t.track_id = l.track_id
+WHERE l.user_id = 398943;
+
+
+-- Top 5 artists by plays
+--EXPLAIN QUERY PLAN
+--SCAN ta
+SELECT ta.artist, SUM(l.listen_count) AS plays
+FROM listen l
+JOIN track_artist ta ON ta.track_id = l.track_id
+WHERE l.user_id = 398943
+GROUP BY ta.artist
+ORDER BY plays DESC,ta.artist ASC
+LIMIT 5;
+
+
+-- Top 5 tracks by plays
+--EXPLAIN QUERY PLAN
+--SCAN t
+SELECT t.track_name, SUM(l.listen_count) AS plays
+FROM listen l
+JOIN tracks t ON t.track_id = l.track_id
+WHERE l.user_id = 398943
+GROUP BY t.track_id, t.track_name
+ORDER BY plays DESC, track_name ASC
+LIMIT 5;
+
+
+-- Top 5 albums
+SELECT t.album_name, SUM(l.listen_count) AS plays
+FROM listen l
+JOIN tracks t ON t.track_id = l.track_id
+WHERE l.user_id = 398943
+GROUP BY t.album_name
+ORDER BY plays DESC, album_name ASC
+LIMIT 5;
+
+
+-- Top 5 favorite artists (by num of favorited tracks)
+SELECT ta.artist, COUNT(*) AS favorited_tracks
+FROM listen l
+JOIN track_artist ta ON ta.track_id = l.track_id
+WHERE l.user_id = 398943
+	AND l.favorite = 1
+GROUP BY ta.artist
+ORDER BY favorited_tracks DESC, ta.artist ASC
+LIMIT 5;
+
+
+-- Most played track and how many times listened to
+SELECT t.track_name, l.listen_count AS plays
+FROM listen l
+JOIN tracks t ON t.track_id = l.track_id
+WHERE l.user_id = 398943
+ORDER BY l.listen_count DESC, t.track_name ASC
+LIMIT 1;
+
+-- Hidden gem (most-played track w lowest popularity)
+SELECT t.track_name, t.popularity
+FROM listen l
+JOIN tracks t ON t.track_id = l.track_id
+WHERE l.user_id = 398943
+ORDER BY t.popularity ASC, l.listen_count DESC, t.track_name ASC
+LIMIT 1;
+
+-- Listening Personality (avg valence energy and danceability, avg bpm from tempo)
+-- Maybe include label names based on data, like Spotify creating groups based on stats?
+--EXPLAIN QUERY PLAN
+--SCAN tattr
+SELECT
+    ROUND(SUM(tattr.valence * l.listen_count) / SUM(l.listen_count), 3) AS avg_valence,
+    ROUND(SUM(tattr.energy * l.listen_count) / SUM(l.listen_count), 3) AS avg_energy,
+    ROUND(SUM(tattr.danceability * l.listen_count) / SUM(l.listen_count), 3) AS avg_danceability,
+    ROUND(SUM(tattr.tempo * l.listen_count) / SUM(l.listen_count), 1) AS avg_bpm
+FROM listen l
+JOIN track_attributes tattr ON tattr.track_id = l.track_id
+WHERE l.user_id = 398943;
+
+
+-- Top 1% listener
+--EXPLAIN QUERY PLAN
+--SCAN listen
+--SCAN ut
+--SCAN user_totals
+WITH user_totals AS (
+    SELECT user_id, SUM(listen_count) AS total_plays
+    FROM listen
+    GROUP BY user_id
+)
+SELECT
+    ut.total_plays,
+    1 + (SELECT COUNT(*) FROM user_totals WHERE total_plays &gt; ut.total_plays) AS listener_rank,
+    (SELECT COUNT(*) FROM user_totals) AS total_users,
+    100.0 * (1 + (SELECT COUNT(*) FROM user_totals WHERE total_plays &gt; ut.total_plays))
+          / (SELECT COUNT(*) FROM user_totals) AS top_percent
+FROM user_totals ut
+WHERE ut.user_id = 398943;
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
