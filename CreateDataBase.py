@@ -68,9 +68,58 @@ def create_tables(cursor):
         '''
         CREATE TABLE users (
             ID INTEGER PRIMARY KEY NOT NULL,
-            name VARCHARACTER(20)
+            name VARCHARACTER(20),
+            role_id INTEGER NOT NULL
+
+            FOREIGN KEY (role_id) REFERENCES roles(ID)
             );
         ''')
+
+    cursor.execute(
+        '''
+        CREATE TABLE roles (
+            ID INTEGER PRIMARY KEY NOT NULL,
+            name VARCHARACTER(20)
+            );
+        '''
+    )
+
+    cursor.execute(
+        '''
+        CREATE TABLE permissions (
+            ID INTEGER PRIMARY KEY NOT NULL,
+            name VARCHARACTER(20)
+            );
+        '''
+    )
+
+    cursor.execute(
+        '''
+        CREATE TABLE user_roles (
+            user_id INTEGER NOT NULL,
+            role_id INTEGER NOT NULL,
+            
+            PRIMARY KEY (user_id, role_id),
+
+            FOREIGN KEY (user_id) REFERENCES users(ID),
+            FOREIGN KEY (role_id) REFERENCES roles(ID)
+            );
+        '''
+    )
+
+    cursor.execute(
+        '''
+        CREATE TABLE role_permissions (
+            role_id INTEGER NOT NULL,
+            permission_id INTEGER NOT NULL,
+
+            PRIMARY KEY (role_id, permission_id),
+            
+            FOREIGN KEY (role_id) REFERENCES roles(ID),
+            FOREIGN KEY (permission_id) REFERENCES permissions(ID)
+        );
+        '''
+    )
     
     cursor.execute(
         '''
