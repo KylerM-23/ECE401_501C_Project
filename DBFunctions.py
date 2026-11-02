@@ -10,15 +10,14 @@ def exeute_query(cursor, query, print_query = False):
     except sqlite3.Error as e:
         print(f"An error occurred: {e}")
         
-    return
+    return cursor.fetchall()
 
 def get_artists(cursor):
     query = f"""
             SELECT DISTINCT artist
             FROM track_artist"""
-        
-    exeute_query(cursor, query)
-    return cursor.fetchall()
+    
+    return exeute_query(cursor, query)
 
 def find_track_ID(cursor, track_name, album_name = None, artist_name = None):
     
@@ -42,8 +41,7 @@ def find_track_ID(cursor, track_name, album_name = None, artist_name = None):
             SELECT DISTINCT track_id
             FROM tracks """ + predicate + ";"
         
-    exeute_query(cursor, query)
-    tracks = cursor.fetchall()
+    tracks = exeute_query(cursor, query)
     
     if (len(tracks) > 0):
         if (len(tracks) > 1):

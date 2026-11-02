@@ -17,7 +17,7 @@ def create_tables(cursor):
             track_id    TEXT PRIMARY KEY NOT NULL,
             album_name  TEXT NOT NULL,
             track_name  TEXT NOT NULL,
-            popularity  INTEGER NOT NULL,
+            popularity  INTEGER,
             duration_ms INTEGER NOT NULL,
             explicit    TEXT NOT NULL
             );
@@ -63,15 +63,12 @@ def create_tables(cursor):
             time_signature   INTEGER
             );
         ''')
-    
+        
     cursor.execute(
         '''
         CREATE TABLE users (
             ID INTEGER PRIMARY KEY NOT NULL,
-            name VARCHARACTER(20),
-            role_id INTEGER NOT NULL
-
-            FOREIGN KEY (role_id) REFERENCES roles(ID)
+            name VARCHARACTER(20)
             );
         ''')
 
@@ -123,39 +120,6 @@ def create_tables(cursor):
     
     cursor.execute(
         '''
-        CREATE TABLE artist (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            num_listeners INTEGER,
-            num_tracks INTEGER,
-            num_albums INTEGER,
-            time_listened INTEGER,
-            
-            FOREIGN KEY (ID) REFERENCES users(ID)
-            );
-        ''')
-    
-    cursor.execute(
-        '''
-        CREATE TABLE listener (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            age INTEGER NOT NULL,
-            
-            FOREIGN KEY (ID) REFERENCES users(ID)
-            );
-        ''')
-    
-    cursor.execute(
-        '''
-        CREATE TABLE admin (
-            ID INTEGER PRIMARY KEY NOT NULL,
-            rank VARCHARACTER(20),
-            
-            FOREIGN KEY (ID) REFERENCES users(ID)
-            );
-        ''')
-    
-    cursor.execute(
-        '''
         CREATE TABLE listen (
             track_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
@@ -168,7 +132,38 @@ def create_tables(cursor):
             );
         ''')
     
-def seperate_track_artists(cursor):
+    cursor.execute(
+        '''
+        CREATE TABLE artist_submission (
+            submission_id    INTEGER NOT NULL,
+            artist_id 		 TEXT NOT NULL,
+            
+            album_name  	TEXT NOT NULL,
+            track_name  	TEXT NOT NULL,
+            popularity  	INTEGER,
+            duration_ms 	INTEGER NOT NULL,
+            explicit    	TEXT NOT NULL,
+            track_genre 	TEXT NOT NULL,
+            
+            danceability     REAL,
+            energy           REAL,
+            key              INTEGER,
+            loudness         REAL,
+            mode             INTEGER,
+            speechiness      REAL,
+            acousticness     REAL,
+            instrumentalness REAL,
+            liveness         REAL,
+            valence          REAL,
+            tempo            REAL,
+            time_signature   INTEGER,
+            
+            PRIMARY KEY (submission_id, artist_id),
+            FOREIGN KEY (artist_id) REFERENCES users(ID)
+            );
+        ''')
+    
+def separate_track_artists(cursor):
     cursor.execute('''
         SELECT DISTINCT track_id, artists
         FROM songs
@@ -195,25 +190,7 @@ def seperate_track_artists(cursor):
         except:
             print(query)
         
-try:
-    if os.path.isfile("music.db"):
-        os.remove("music.db")
-        
-    db = sqlite3.connect("music.db") #Open/create database file
-
-    cursor = db.cursor()   #Create a cursor object to execute SQL commands
-
-    load_data(db, "songs", "Data/songs.csv")
-    
-    db.commit()	#save changes to DB
-    
-    #SQLITE does not allow for tables to add new constraints for primary keys
-    #Need to recreate the tables and add constraints. :(
-    
-    create_tables(cursor)
-    
-    seperate_track_artists(cursor)
-    
+def fill_track_tables(cursor):
     cursor.execute(
         '''
         INSERT INTO track_genre(track_id, track_genre)   
@@ -246,6 +223,29 @@ try:
         FROM songs
         GROUP BY track_id;
         ''')
+    
+
+
+try:
+    if os.path.isfile("music.db"):
+        os.remove("music.db")
+        
+    db = sqlite3.connect("music.db") #Open/create database file
+
+    cursor = db.cursor()   #Create a cursor object to execute SQL commands
+
+    load_data(db, "songs", "Data/songs.csv")
+    
+    db.commit()	#save changes to DB
+    
+    #SQLITE does not allow for tables to add new constraints for primary keys
+    #Need to recreate the tables and add constraints. :(
+    
+    create_tables(cursor)
+    
+    separate_track_artists(cursor)
+    
+    fill_track_tables(cursor)
     
     cursor.execute("DROP TABLE songs;") #we are done using songs and can delete it
     
