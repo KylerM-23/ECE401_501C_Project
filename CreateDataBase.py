@@ -224,6 +224,9 @@ def fill_track_tables(cursor):
         GROUP BY track_id;
         ''')
     
+def create_index(cursor):
+    cursor.execute('''CREATE INDEX idx_track_info ON tracks(track_name, album_name);''')
+    cursor.execute('''CREATE INDEX idx_artist_track_info ON artist_submission(track_name, album_name);''')
 
 
 try:
@@ -246,6 +249,8 @@ try:
     separate_track_artists(cursor)
     
     fill_track_tables(cursor)
+    
+    create_index(cursor)
     
     cursor.execute("DROP TABLE songs;") #we are done using songs and can delete it
     

@@ -56,26 +56,37 @@ def rainbow_bg(root, POS):
     root.after(1, rainbow_bg, root, POS)
     
 def final_summary(root, top_songs, top_artists):
-    welcome_lb = tk.Label(root, text="Welcome To Music Wrapped: 2026")
-    welcome_lb.pack(pady=20)
+    main_frame = tk.Frame(root)
+    main_frame.grid(row = 0, column = 0, padx=10, pady=10, sticky="nsew")
     
-    top_track_lb = tk.Label(root, text="Top Songs:")
-    top_track_lb.pack(pady=20)
+    welcome_lb = tk.Label(main_frame, text="Welcome To Music Wrapped: 2026")
+    welcome_lb.grid(row = 0, column = 0, padx=10, pady=10, sticky="ew")
+    
+    #TOP TRACKS
+    track_frame = tk.Frame(main_frame)
+    track_frame.grid(row = 1, column = 0, padx=10, pady=10, sticky="ew")
+    
+    top_track_lb = tk.Label(track_frame, text="Top Songs:")
+    top_track_lb.grid(row = 0, column = 0, padx=10, pady=10, sticky="ew")
     
     top_tracks_lb = [None, None, None]
     
     for rank, track in enumerate(top_songs):
         if (track != None):
-            top_tracks_lb[rank] = tk.Label(root, text = f"{rank+1}. {track[0]} by {track[1]}")
-            top_tracks_lb[rank].pack(pady=20)
-        
-    top_artist_lb = tk.Label(root, text="Top Artists:")
-    top_artist_lb.pack(pady=20)
+            top_tracks_lb[rank] = tk.Label(track_frame, text = f"{rank+1}. {track[0]} by {track[1]}")
+            top_tracks_lb[rank].grid(row = 1 + rank, column = 0, padx=10, pady=10, sticky="ew")
+    
+    #TOP ARTISTS        
+    artist_frame = tk.Frame(main_frame)
+    artist_frame.grid(row = 1, column = 1, padx=10, pady=10, sticky="ew")
+    
+    top_artist_lb = tk.Label(artist_frame, text="Top Artists:")
+    top_artist_lb.grid(row = 0, column = 0, padx=10, pady=10, sticky="ew")
     
     top_artists_lb = [None, None, None]
     
     for rank, artist in enumerate(top_artists):
         if (artist != None):
-            top_artists_lb[rank] = tk.Label(root, text = f"{rank+1}. {artist}")
-            top_artists_lb[rank].pack(pady=20)
+            top_artists_lb[rank] = tk.Label(artist_frame, text = f"{rank+1}. {artist}")
+            top_artists_lb[rank].grid(row = 1 + rank, column = 0, padx=10, pady=10, sticky="ew")
 
