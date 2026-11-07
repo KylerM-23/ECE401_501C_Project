@@ -71,6 +71,14 @@ def create_tables(cursor):
             name VARCHARACTER(20)
             );
         ''')
+    
+    cursor.execute(
+        '''
+        CREATE TABLE user_wrap (
+            ID INTEGER PRIMARY KEY NOT NULL,
+            json_wrap TEXT
+            );
+        ''')
 
     cursor.execute(
         '''

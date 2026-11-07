@@ -43,8 +43,7 @@ for wrap in wrapped_attributes:
     
     if (wrap['type'] == 'Song Rank'):
         for rank, track in enumerate(wrap["track"]):
-            top_songs[rank] = (track["track"], track["artist"])
-        
+            top_songs[rank] = (track["track"], track["artist"])        
         
 root = tk.Tk()
 
