@@ -3,7 +3,9 @@ import tkinter as tk
 POS_MAX = 6000
 division = POS_MAX/6
 slope = 255/division
-
+FONT = ("Arial", 15)
+PADDING = 5
+MAX_CHAR = 50
 
 def rainbow_bg(root, POS):
     POS += 0.5
@@ -55,38 +57,98 @@ def rainbow_bg(root, POS):
     root.configure(bg = color)  
     root.after(1, rainbow_bg, root, POS)
     
-def final_summary(root, top_songs, top_artists):
-    main_frame = tk.Frame(root)
-    main_frame.grid(row = 0, column = 0, padx=10, pady=10, sticky="nsew")
+def process_string(string):
+    new_string = string
+    if len(string) > MAX_CHAR:
+        new_string = string[0:MAX_CHAR] + "..."
+    return new_string
+
+def process_wrap(wrapped_dictionary, wrapped_attributes):
+    for wrap in wrapped_attributes:
+        if (wrap['type'] == 'Artist Rank'):
+            for rank, artist in enumerate(wrap["artist"]):
+                wrapped_dictionary["top_artists"][rank] = artist
+
+        if (wrap['type'] == 'Song Rank'):
+            for rank, track in enumerate(wrap["track"]):
+                wrapped_dictionary["top_songs"][rank] = (track["track"], track["artist"])
+        
+        if (wrap['type'] == 'Minutes'):
+            wrapped_dictionary["minutes"] = wrap["mins"]
+        
+        if (wrap['type'] == 'Rank'):
+            wrapped_dictionary["rank"] = wrap["rank"]      
+            
     
-    welcome_lb = tk.Label(main_frame, text="Welcome To Music Wrapped: 2026")
-    welcome_lb.grid(row = 0, column = 0, padx=10, pady=10, sticky="ew")
+def update_wrapped(root, label, wrapped_attributes):
+    
+    
+    root.configure(bg = color)  
+    root.after(1, rainbow_bg, root, POS)
+    
+def final_summary(root, wrapped_attributes):
+    wrapped_dictionary = {
+        "top_artists": [None, None, None],
+        "top_songs" : [None, None, None],
+        "minutes": 0,
+        "rank": 0
+        }
+    
+    process_wrap(wrapped_dictionary, wrapped_attributes)
+
+    main_frame = tk.Frame(root, width = 1200, height = 1000)
+    main_frame.grid(row = 0, column = 0, padx=5, pady=5, sticky="nsew")
+
+    main_frame.columnconfigure(0, weight=1, uniform="side_by_side")
+    main_frame.columnconfigure(1, weight=1, uniform="side_by_side")
+    
+    welcome_lb = tk.Label(main_frame, text="Welcome To Music Wrapped: 2026", font = FONT)
+    welcome_lb.grid(row = 0, column = 0, columnspan = 2, padx=PADDING, pady=PADDING)
     
     #TOP TRACKS
     track_frame = tk.Frame(main_frame)
-    track_frame.grid(row = 1, column = 0, padx=10, pady=10, sticky="ew")
+    track_frame.grid(row = 1, column = 0, padx=PADDING, pady=PADDING)
     
-    top_track_lb = tk.Label(track_frame, text="Top Songs:")
-    top_track_lb.grid(row = 0, column = 0, padx=10, pady=10, sticky="ew")
+    top_track_lb = tk.Label(track_frame, text="Top Songs:", font = FONT)
+    top_track_lb.grid(row = 0, column = 0, padx=PADDING, pady=PADDING)
     
     top_tracks_lb = [None, None, None]
     
-    for rank, track in enumerate(top_songs):
+    for rank, track in enumerate(wrapped_dictionary["top_songs"]):
         if (track != None):
-            top_tracks_lb[rank] = tk.Label(track_frame, text = f"{rank+1}. {track[0]} by {track[1]}")
-            top_tracks_lb[rank].grid(row = 1 + rank, column = 0, padx=10, pady=10, sticky="ew")
+            string = process_string(f"{rank+1}. {track[0]} by {track[1]}")
+            top_tracks_lb[rank] = tk.Label(track_frame, text = string, font = FONT, width = 50, anchor = "w")
+            top_tracks_lb[rank].grid(row = 1 + rank, column = 0, padx=PADDING, pady=PADDING)
     
     #TOP ARTISTS        
     artist_frame = tk.Frame(main_frame)
-    artist_frame.grid(row = 1, column = 1, padx=10, pady=10, sticky="ew")
+    artist_frame.grid(row = 1, column = 1, padx=PADDING, pady=PADDING)
     
-    top_artist_lb = tk.Label(artist_frame, text="Top Artists:")
-    top_artist_lb.grid(row = 0, column = 0, padx=10, pady=10, sticky="ew")
+    top_artist_lb = tk.Label(artist_frame, text="Top Artists:", font = FONT)
+    top_artist_lb.grid(row = 0, column = 0, padx=PADDING, pady=PADDING)
     
     top_artists_lb = [None, None, None]
     
-    for rank, artist in enumerate(top_artists):
+    for rank, artist in enumerate(wrapped_dictionary["top_artists"]):
         if (artist != None):
-            top_artists_lb[rank] = tk.Label(artist_frame, text = f"{rank+1}. {artist}")
-            top_artists_lb[rank].grid(row = 1 + rank, column = 0, padx=10, pady=10, sticky="ew")
+            string = process_string(f"{rank+1}. {artist}")
+            top_artists_lb[rank] = tk.Label(artist_frame, text = string, font = FONT, width = 35, anchor = "w")
+            top_artists_lb[rank].grid(row = 1 + rank, column = 0, padx=PADDING, pady=PADDING)
+            
+    #spacer
+    spacer_lb = tk.Label(main_frame, text="", font = FONT)
+    spacer_lb.grid(row = 2, column = 0, padx=PADDING, pady=PADDING)
+    
+    #NUM MINUTES
+    num_minutes = wrapped_dictionary["minutes"]
+    minutes_lb = tk.Label(main_frame, text=f"Minutes Listened: {num_minutes}", font = FONT)
+    minutes_lb.grid(row = 3, column = 0, padx=PADDING, pady=PADDING)
+    
+    #NUM RANK
+    rank_minutes = wrapped_dictionary["rank"]
+    total_min_lb = tk.Label(main_frame, text=f"Global Rank: {rank_minutes}%", font = FONT)
+    total_min_lb.grid(row = 3, column = 1, padx=PADDING, pady=PADDING)
+            
+    #create updating loop to change which of the small wraps is being dispplayed
+    #root.after(10000, update_wrapped, root, wrapped_label, wrapped_attributes)
 

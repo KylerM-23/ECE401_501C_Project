@@ -98,15 +98,16 @@ def build_wrapped_json(cursor, user_id):
             "track": ear[1],
             "artist": ear[2],
             "listens": ear[3],
-            "importance": 1
+            "importance": 2
         })
 
     total = get_total_songs(cursor, user_id)
-    wrapped.append({
+    if total:
+        wrapped.append({
         "type": "Total Songs",
         "total": total,
-        "importance": 1
-    })
+        "importance": 2
+        })
 
     gem = get_hidden_gem(cursor, user_id)
     if gem:
@@ -116,11 +117,59 @@ def build_wrapped_json(cursor, user_id):
             "track": gem[1],
             "artist": gem[2],
             "popularity": gem[3],
+            "importance": 2
+        })
+        
+    mins = get_total_minutes(cursor, user_id)
+    
+    if mins:
+        wrapped.append({
+            "type": "Minutes",
+            "mins": mins,
             "importance": 1
         })
+        
+    mins = get_total_minutes(cursor, user_id)
+    global_mins = get_global_minutes(cursor)
+    
+    if mins:
+        wrapped.append({
+            "type": "Minutes",
+            "mins": mins,
+            "importance": 1
+        })
+    
+    if global_mins:
+        wrapped.append({
+            "type": "Rank",
+            "rank": 100 * mins / global_mins,
+            "importance": 1
+        })
+    
 
     return json.dumps(wrapped, indent=2)
 
+def create_wrapped_json_users(cursor):
+    #get a list of all avaliable users that have listened to a song
+    cursor.execute(f"""
+        SELECT DISTINCT user_id
+        FROM listen
+        WHERE user_id > 100
+        """)
+
+    users = cursor.fetchall()   # (track_id, track_name, artists, listen_count)
+
+    counter = 0
+    
+    for user in users:
+        json_str = build_wrapped_json(cursor, user[0])
+        
+        query = f"""
+        INSERT INTO user_wrap (ID, json_wrap)
+            VALUES 	(?, ?);
+        """
+        
+        cursor.execute(query, (user[0], json_str))
 
 if __name__ == "__main__":
     db = sqlite3.connect("music.db")
@@ -128,5 +177,8 @@ if __name__ == "__main__":
 
     try:
         print(build_wrapped_json(cursor, 23))
+        
+        create_wrapped_json_users(cursor)
     finally:
+        db.commit()
         db.close()

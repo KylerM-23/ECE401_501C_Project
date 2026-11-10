@@ -14,31 +14,21 @@ def display_wrapped(cursor, user_id):
             WHERE ID = {user_id}
             """
     json_strings = exeute_query(cursor, query, print_query = False) #get the json string from the user_wrap table
-    json_string = json_strings[0]
-
-    top_artists = [None, None, None]
-    top_songs = [None, None, None]
+    json_string = json_strings[0][0]
 
     wrapped_attributes = json.loads(json_string) # Convert the JSON string into a Python list of dictionaries
-
-    for wrap in wrapped_attributes:
-        if (wrap['type'] == 'Artist Rank'):
-            for rank, artist in enumerate(wrap["artist"]):
-                top_artists[rank] = artist
-    
-        if (wrap['type'] == 'Song Rank'):
-            for rank, track in enumerate(wrap["track"]):
-                top_songs[rank] = (track["track"], track["artist"])        
-        
 
     root = tk.Tk()
 
     # Configure the window settings
     root.title("Your Music Wrapped")
-    root.geometry("800x800")  # Width x Height in pixels
+    root.geometry("1200x1000")  # Width x Height in pixels
+    
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
 
     GUI.rainbow_bg(root, random.randint(1, 5000))
-    GUI.final_summary(root, top_songs, top_artists)
+    GUI.final_summary(root, wrapped_attributes)
 
     root.mainloop()
 

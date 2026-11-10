@@ -62,7 +62,7 @@ def add_random_users(cursor, num_users):
     all_artists = get_artists(cursor)
     
     for user in range(0, num_users):
-        random_artist_num = random.randint(1, 10)		#covers people who listen to a few artists to the super fan
+        random_artist_num = random.randint(1, 20)		#covers people who listen to a few artists to the super fan
         
         uID = addUser(cursor, f"BOT{user}")	#add n number of users
         
@@ -81,8 +81,9 @@ def add_random_users(cursor, num_users):
             tracks = cursor.fetchall()
             
             for t_id in tracks:
-                fav = int(random.uniform(0,1.99))
-                addListen(cursor, t_id[0], uID, random.randint(1, 20), fav)
+                if (int(random.uniform(0,1.99)) == 1):
+                    fav = int(random.uniform(0,1.99))
+                    addListen(cursor, t_id[0], uID, random.randint(1, 200), fav)
         
 
 
@@ -90,11 +91,13 @@ db = sqlite3.connect("music.db") #Open/create database file
 
 cursor = db.cursor()   #Create a cursor object to execute SQL commands
 
-add_random_users(cursor, 100)
-
 create_artist_accounts(cursor)
 
-'''
+add_random_users(cursor, 200)
+
+
+
+
 addUser(cursor, "Kyler", uID = 23)
 addListen(cursor, find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
 addListen(cursor, find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
@@ -102,7 +105,7 @@ addListen(cursor, find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1,
 addListen(cursor, find_track_ID(cursor, artist_name = 'Linkin Park', track_name = "Papercut"), 23, 1, 1)
 addListen(cursor, find_track_ID(cursor, album_name = 'Arrival', track_name = "Dancing Queen"), 23, 1, 0)
 addListen(cursor, find_track_ID(cursor, artist_name = 'Korn', track_name = "Freak On a Leash"), 23, 1, 1)
-   '''
+
 
 db.commit()
 db.close()
