@@ -236,40 +236,40 @@ def create_index(cursor):
     cursor.execute('''CREATE INDEX idx_track_info ON tracks(track_name, album_name);''')
     cursor.execute('''CREATE INDEX idx_artist_track_info ON artist_submission(track_name, album_name);''')
 
+if __name__ == "__main__":
+    try:
+        if os.path.isfile("music.db"):
+            os.remove("music.db")
+            
+        db = sqlite3.connect("music.db") #Open/create database file
 
-try:
-    if os.path.isfile("music.db"):
-        os.remove("music.db")
+        cursor = db.cursor()   #Create a cursor object to execute SQL commands
+
+        load_data(db, "songs", "Data/songs.csv")
         
-    db = sqlite3.connect("music.db") #Open/create database file
+        db.commit()	#save changes to DB
+        
+        #SQLITE does not allow for tables to add new constraints for primary keys
+        #Need to recreate the tables and add constraints. :(
+        
+        create_tables(cursor)
+        
+        separate_track_artists(cursor)
+        
+        fill_track_tables(cursor)
+        
+        create_index(cursor)
+        
+        cursor.execute("DROP TABLE songs;") #we are done using songs and can delete it
+        
+        db.commit()	#save changes to DB
 
-    cursor = db.cursor()   #Create a cursor object to execute SQL commands
+    except sqlite3.Error as e:
+        print(f"An error occurred: {e}")
+        delete = 1
 
-    load_data(db, "songs", "Data/songs.csv")
-    
-    db.commit()	#save changes to DB
-    
-    #SQLITE does not allow for tables to add new constraints for primary keys
-    #Need to recreate the tables and add constraints. :(
-    
-    create_tables(cursor)
-    
-    separate_track_artists(cursor)
-    
-    fill_track_tables(cursor)
-    
-    create_index(cursor)
-    
-    cursor.execute("DROP TABLE songs;") #we are done using songs and can delete it
-    
-    db.commit()	#save changes to DB
+    finally:
+        db.close()
 
-except sqlite3.Error as e:
-    print(f"An error occurred: {e}")
-    delete = 1
-
-finally:
-    db.close()
-
-    if delete == 1:
-        os.remove("music.db")
+        if delete == 1:
+            os.remove("music.db")

@@ -2,7 +2,7 @@ import sqlite3
 from DBFunctions import *
 import random
 
-def generate_userID(uID):
+def generate_userID(cursor, uID):
     if uID != None:	#Programmer has overriden the ID generation
         return uID
     
@@ -22,7 +22,7 @@ def generate_userID(uID):
     
 
 def addUser(cursor, uName, uID = None):
-    ID = generate_userID(uID)
+    ID = generate_userID(cursor, uID)
     if(ID == -1):
         return
         
@@ -86,26 +86,24 @@ def add_random_users(cursor, num_users):
                     addListen(cursor, t_id[0], uID, random.randint(1, 200), fav)
         
 
+if __name__ == "__main__":
+    
+    db = sqlite3.connect("music.db") #Open/create database file
 
-db = sqlite3.connect("music.db") #Open/create database file
+    cursor = db.cursor()   #Create a cursor object to execute SQL commands
 
-cursor = db.cursor()   #Create a cursor object to execute SQL commands
+    create_artist_accounts(cursor)
 
-create_artist_accounts(cursor)
+    add_random_users(cursor, 200)
 
-add_random_users(cursor, 200)
-
-
-
-
-addUser(cursor, "Kyler", uID = 23)
-addListen(cursor, find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
-addListen(cursor, find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
-addListen(cursor, find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1, 1)
-addListen(cursor, find_track_ID(cursor, artist_name = 'Linkin Park', track_name = "Papercut"), 23, 1, 1)
-addListen(cursor, find_track_ID(cursor, album_name = 'Arrival', track_name = "Dancing Queen"), 23, 1, 0)
-addListen(cursor, find_track_ID(cursor, artist_name = 'Korn', track_name = "Freak On a Leash"), 23, 1, 1)
+    addUser(cursor, "Kyler", uID = 23)
+    addListen(cursor, find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
+    addListen(cursor, find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
+    addListen(cursor, find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1, 1)
+    addListen(cursor, find_track_ID(cursor, artist_name = 'Linkin Park', track_name = "Papercut"), 23, 1, 1)
+    addListen(cursor, find_track_ID(cursor, album_name = 'Arrival', track_name = "Dancing Queen"), 23, 1, 0)
+    addListen(cursor, find_track_ID(cursor, artist_name = 'Korn', track_name = "Freak On a Leash"), 23, 1, 1)
 
 
-db.commit()
-db.close()
+    db.commit()
+    db.close()

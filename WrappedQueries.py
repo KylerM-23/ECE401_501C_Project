@@ -47,6 +47,20 @@ def get_total_minutes(cursor, user_id):
     total_minutes = cursor.fetchone()[0]
     return total_minutes if total_minutes is not None else 0
 
+# Total Top Listener
+def get_top_listening(cursor, user_id):
+    cursor.execute("""
+        SELECT user_id, SUM(t.duration_ms) / 60000.0 AS mins
+        FROM listen l JOIN tracks t ON l.track_id = t.track_id
+        GROUP BY user_id
+        ORDER BY mins DESC 
+        LIMIT 1;
+        """)
+
+    top_listening = cursor.fetchone()[1]
+    
+    return top_listening if top_listening is not None else 0
+
 # Total Minutes Across All Users
 def get_global_minutes(cursor):
     cursor.execute("""
@@ -135,17 +149,18 @@ def build_wrapped_json(cursor, user_id):
     if mins:
         wrapped.append({
             "type": "Minutes",
-            "mins": mins,
+            "mins": int(mins),
             "importance": 1
         })
     
-    if global_mins:
+    top_listen = get_top_listening(cursor, user_id)
+    
+    if top_listen and mins:
         wrapped.append({
             "type": "Rank",
-            "rank": 100 * mins / global_mins,
+            "rank": int(100 * mins / top_listen),
             "importance": 1
         })
-    
 
     return json.dumps(wrapped, indent=2)
 
@@ -162,21 +177,24 @@ def create_wrapped_json_users(cursor):
     counter = 0
     
     for user in users:
-        json_str = build_wrapped_json(cursor, user[0])
+        try:
+            json_str = build_wrapped_json(cursor, user[0])
         
-        query = f"""
-        INSERT INTO user_wrap (ID, json_wrap)
-            VALUES 	(?, ?);
-        """
-        
-        cursor.execute(query, (user[0], json_str))
+            query = f"""
+            INSERT INTO user_wrap (ID, json_wrap)
+                VALUES 	(?, ?);
+            """
+            
+            cursor.execute(query, (user[0], json_str))
+        except sqlite3.Error as e:
+            print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     db = sqlite3.connect("music.db")
     cursor = db.cursor()
 
     try:
-        print(build_wrapped_json(cursor, 23))
+        #print(build_wrapped_json(cursor, 23))
         
         create_wrapped_json_users(cursor)
     finally:
