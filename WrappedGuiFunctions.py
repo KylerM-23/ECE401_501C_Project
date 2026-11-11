@@ -8,14 +8,17 @@ slope = 255/division
 
 FONT = ("Arial", 15)
 BIG_FONT = ("Arial", 16)
+TOTAL_FONT = ("Arial", 17, "bold")
 
 PADDING = 5
 PADX = PADDING
 PADY = PADDING*3
 MAX_CHAR = 50
 
-def rainbow_bg(root, mf, POS):
-    POS += 0.5
+index = 0
+
+def rainbow_bg(root, POS):
+    POS += 10
     if (POS > POS_MAX):
         POS = 0
     
@@ -48,22 +51,9 @@ def rainbow_bg(root, mf, POS):
         G = 0
         B = 0
     
-    R = str(hex(int(R)))[2:]
-    G = str(hex(int(G)))[2:]
-    B = str(hex(int(B)))[2:]
-    
-    if (len(R) == 1):
-        R = "0" + R
-    if (len(G) == 1):
-        G = "0" + G
-    if (len(B) == 1):
-        B = "0" + B
-    
-    color = "#"+ R + G + B
-    
+    color = f"#{int(R):02x}{int(G):02x}{int(B):02x}"
     root.configure(bg = color)
-    mf.configure(bg = color)  
-    root.after(1, rainbow_bg, root, mf, POS)
+    root.after(16, rainbow_bg, root,POS)
     
 def process_string(string):
     new_string = textwrap.fill(string, width = MAX_CHAR)
@@ -94,15 +84,24 @@ def process_wrap(wrapped_dictionary, wrapped_attributes):
             wrapped_dictionary["other"].append(string)
             
 def update_wrapped(root, label, wrapped_dictionary):
+    global index
+    
     max_char = 100
     
-    data = random.choice(wrapped_dictionary["other"])
+    if (index == len(wrapped_dictionary["other"])):
+        index = 0
+    data = wrapped_dictionary["other"][index]
     
     string = textwrap.fill(data, width = max_char)
     
     label.config(text = string)
     
-def final_summary(root, main_frame, wrapped_attributes, num_users):
+    index+=1
+    
+    #create updating loop to change which of the small wraps is being displayed
+    root.after(30000, update_wrapped, root, label, wrapped_dictionary)
+    
+def final_summary(root, wrapped_attributes, num_users):
     wrapped_dictionary = {
         "top_artists": [None, None, None],
         "top_songs" : [None, None, None],
@@ -113,7 +112,13 @@ def final_summary(root, main_frame, wrapped_attributes, num_users):
     
     process_wrap(wrapped_dictionary, wrapped_attributes)
     
-    welcome_lb = tk.Label(main_frame, text="Welcome To Music Wrapped: 2026", font = FONT)
+    main_frame = tk.Frame(root, width = 1200, height = 1000)
+    main_frame.grid(row = 0, column = 0, padx=30, pady=30, sticky="nsew")
+
+    main_frame.columnconfigure(0, weight=1, uniform="side_by_side")
+    main_frame.columnconfigure(1, weight=1, uniform="side_by_side")
+
+    welcome_lb = tk.Label(main_frame, text="Welcome To Music Wrapped: 2026", font = TOTAL_FONT)
     welcome_lb.grid(row = 0, column = 0, columnspan = 2, padx=PADX, pady=PADY)
     
     #TOP TRACKS
@@ -159,8 +164,8 @@ def final_summary(root, main_frame, wrapped_attributes, num_users):
     wrapped_label = tk.Label(main_frame, text="", font = BIG_FONT)
     wrapped_label.grid(row = 5, column = 0, columnspan = 2, padx=PADX, pady=PADY)
             
-    update_wrapped(root, wrapped_label, wrapped_dictionary)
+    global index
+    index = random.randint(0, len(wrapped_dictionary["other"])-1)
     
-    #create updating loop to change which of the small wraps is being dispplayed
-    root.after(10000, update_wrapped, root, wrapped_label, wrapped_dictionary)
+    update_wrapped(root, wrapped_label, wrapped_dictionary)
 
