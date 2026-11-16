@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  15 NOV 2026 18:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  16 NOV 2026 06:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./neurips_2026.tex
-(neurips_2026.tex
+**./music_database.tex
+(music_database.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 
@@ -399,8 +399,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ckend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count313
-) (neurips_2026.aux)
-\openout1 = `neurips_2026.aux'.
+) (music_database.aux)
+\openout1 = `music_database.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
 LaTeX Font Info:    ... okay on input line 110.
@@ -488,9 +488,9 @@ LaTeX Font Info:    ... okay on input line 110.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 110.
-(neurips_2026.out) (neurips_2026.out)
+(music_database.out) (music_database.out)
 \@outlinefile=\write3
-\openout3 = `neurips_2026.out'.
+\openout3 = `music_database.out'.
 
 LaTeX Info: Redefining \microtypecontext on input line 110.
 Package microtype Info: Applying patch `item' on input line 110.
@@ -584,7 +584,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 <figures/er_diagram.png, id=55, 2399.96625pt x 1336.995pt>
 File: figures/er_diagram.png Graphic file (type png)
 <use figures/er_diagram.png>
-Package pdftex.def Info: figures/er_diagram.png  used on input line 135.
+Package pdftex.def Info: figures/er_diagram.png  used on input line 139.
 (pdftex.def)             Requested size: 397.48499pt x 221.43109pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -595,72 +595,94 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 {C:/Users/Kyler Martinez/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/U
 sers/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 
-Underfull \vbox (badness 1248) has occurred while \output is active []
+Overfull \hbox (6.70581pt too wide) in paragraph at lines 157--160
+[]\T1/cmtt/m/n/10 FROM tracks JOIN track_artist USING (track_id) 
+ []
 
 
-Underfull \vbox (badness 1248) has occurred while \output is active []
+Overfull \hbox (10.62721pt too wide) in paragraph at lines 150--162
+ [][] 
+ []
 
- [2
+[2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.191 
-       <./figures/er_diagram.png>] [3
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.257 \subsection{Math}
-                       
+l.210 \end{document}
+                    
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.257 \subsection{Math}
-                       ]
-Underfull \hbox (badness 3579) in paragraph at lines 258--259
-\T1/cmtt/m/n/10 503 / why-[]is-[]preferable-[]to$[] \T1/ptm/m/n/10 (+20) and []
-$\T1/cmtt/m/n/10 https : / / tex . stackexchange . com / questions / 40492 /
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-83.
-
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.
-fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [4] [5] (checklist.tex [6] [7] [8] [9] [10] [11]) [12] (neurips_2026.aux)
+l.210 \end{document}
+                     <./figures/er_diagram.png>] (music_database.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-Package rerunfilecheck Info: File `neurips_2026.out' has not changed.
-(rerunfilecheck)             Checksum: FD26A2A29B6AAF8D8A553D30C483CC6D;1707.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `music_database.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `music_database.out':
+(rerunfilecheck)             Before: FD26A2A29B6AAF8D8A553D30C483CC6D;1707
+(rerunfilecheck)             After:  ECB9F60B38DAFB4EB1243AE507D115AF;717.
  ) 
 Here is how much of TeX's memory you used:
- 13180 strings out of 467871
- 209838 string characters out of 5413983
- 667126 words of memory out of 5000000
- 41573 multiletter control sequences out of 15000+600000
- 682878 words of font info for 239 fonts, out of 8000000 for 9000
+ 12918 strings out of 467871
+ 206857 string characters out of 5413983
+ 653542 words of memory out of 5000000
+ 41506 multiletter control sequences out of 15000+600000
+ 663804 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,9n,79p,1011b,759s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
-i600\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Kyler Martinez/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Kyler Martinez/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/K
-yler Martinez/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/M
-iKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/Kyler Martinez/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/App
-Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Mar
-tinez/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on neurips_2026.pdf (12 pages, 332349 bytes).
+ 72i,11n,79p,1013b,465s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{subsection.3.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.3} has been referenced but does not exist, 
+replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.6} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.5} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.4} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.3} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.2.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+ <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKT
+eX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Martinez/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on music_database.pdf (2 pages, 238945 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
- 62574 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 140 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
+ 45166 words of extra memory for PDF output out of 51595 (max. 10000000)
 
