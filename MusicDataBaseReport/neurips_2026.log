@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  11 NOV 2026 06:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  15 NOV 2026 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -365,31 +365,61 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 )
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graph
+icx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graph
+ics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.
+sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\g
+raphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen180
+\Gin@req@width=\dimen181
+)
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/float\float.st
+y
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count312
+\float@exts=\toks26
+\float@box=\box55
+\@float@everytoks=\toks27
+\@floatcapt=\box56
+)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3ba
 ckend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count312
+\l__color_backend_stack_int=\count313
 ) (neurips_2026.aux)
 \openout1 = `neurips_2026.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -457,18 +487,18 @@ LaTeX Font Info:    ... okay on input line 108.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 108.
+Package hyperref Info: Link coloring OFF on input line 110.
 (neurips_2026.out) (neurips_2026.out)
 \@outlinefile=\write3
 \openout3 = `neurips_2026.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 108.
-Package microtype Info: Applying patch `item' on input line 108.
-Package microtype Info: Applying patch `toc' on input line 108.
-Package microtype Info: Applying patch `eqnum' on input line 108.
-Package microtype Info: Applying patch `footnote' on input line 108.
-Package microtype Info: Applying patch `verbatim' on input line 108.
-LaTeX Info: Redefining \microtypesetup on input line 108.
+LaTeX Info: Redefining \microtypecontext on input line 110.
+Package microtype Info: Applying patch `item' on input line 110.
+Package microtype Info: Applying patch `toc' on input line 110.
+Package microtype Info: Applying patch `eqnum' on input line 110.
+Package microtype Info: Applying patch `footnote' on input line 110.
+Package microtype Info: Applying patch `verbatim' on input line 110.
+LaTeX Info: Redefining \microtypesetup on input line 110.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -487,24 +517,34 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\su
 pp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count313
-\scratchdimen=\dimen180
-\scratchbox=\box55
-\nofMPsegments=\count314
-\nofMParguments=\count315
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count316
-\MPscratchDim=\dimen181
-\MPnumerator=\count317
-\makeMPintoPDFobject=\count318
-\everyMPtoPDFconversion=\toks27
+\scratchcounter=\count314
+\scratchdimen=\dimen182
+\scratchbox=\box57
+\nofMPsegments=\count315
+\nofMParguments=\count316
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count317
+\MPscratchDim=\dimen183
+\MPnumerator=\count318
+\makeMPintoPDFobject=\count319
+\everyMPtoPDFconversion=\toks29
 )
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\e
+pstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epsto
+pdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-c
 mr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 112
+LaTeX Font Info:    Trying to load font information for U+msa on input line 114
 .
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.
@@ -515,7 +555,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 sa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 112
+LaTeX Font Info:    Trying to load font information for U+msb on input line 114
 .
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.
@@ -531,7 +571,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 11
-6.
+7.
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.f
 d
@@ -541,39 +581,71 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-55.
+<figures/er_diagram.png, id=55, 2399.96625pt x 1336.995pt>
+File: figures/er_diagram.png Graphic file (type png)
+<use figures/er_diagram.png>
+Package pdftex.def Info: figures/er_diagram.png  used on input line 135.
+(pdftex.def)             Requested size: 397.48499pt x 221.43109pt.
 
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.
-fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [1
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1
 
 
 {C:/Users/Kyler Martinez/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/U
 sers/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
- [2] [3]
-Underfull \hbox (badness 3579) in paragraph at lines 359--360
+
+Underfull \vbox (badness 1248) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1248) has occurred while \output is active []
+
+ [2
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.191 
+       <./figures/er_diagram.png>] [3
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.257 \subsection{Math}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.257 \subsection{Math}
+                       ]
+Underfull \hbox (badness 3579) in paragraph at lines 258--259
 \T1/cmtt/m/n/10 503 / why-[]is-[]preferable-[]to$[] \T1/ptm/m/n/10 (+20) and []
 $\T1/cmtt/m/n/10 https : / / tex . stackexchange . com / questions / 40492 /
  []
 
-[4] [5] (checklist.tex [6] [7] [8] [9] [10] [11]) [12] (neurips_2026.aux)
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+83.
+
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.
+fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [4] [5] (checklist.tex [6] [7] [8] [9] [10] [11]) [12] (neurips_2026.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `neurips_2026.out' has not changed.
-(rerunfilecheck)             Checksum: 198CB5B6370BAABC7E0522AC8F4A2211;2742.
+(rerunfilecheck)             Checksum: FD26A2A29B6AAF8D8A553D30C483CC6D;1707.
  ) 
 Here is how much of TeX's memory you used:
- 12766 strings out of 467871
- 202343 string characters out of 5413983
- 660577 words of memory out of 5000000
- 41160 multiletter control sequences out of 15000+600000
- 683790 words of font info for 251 fonts, out of 8000000 for 9000
+ 13180 strings out of 467871
+ 209838 string characters out of 5413983
+ 667126 words of memory out of 5000000
+ 41573 multiletter control sequences out of 15000+600000
+ 682878 words of font info for 239 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,9n,79p,1011b,763s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,9n,79p,1011b,759s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
 i600\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Kyler Martinez/AppData/Local/Progr
@@ -586,9 +658,9 @@ iKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/Kyler Martinez/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Mar
 tinez/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on neurips_2026.pdf (12 pages, 177736 bytes).
+Output written on neurips_2026.pdf (12 pages, 332349 bytes).
 PDF statistics:
- 299 PDF objects out of 1000 (max. 8388607)
- 58 named destinations out of 1000 (max. 500000)
- 62601 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 62574 words of extra memory for PDF output out of 74296 (max. 10000000)
 
