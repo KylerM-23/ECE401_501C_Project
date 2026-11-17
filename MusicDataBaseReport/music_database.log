@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  16 NOV 2026 06:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  16 NOV 2026 19:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -82,48 +82,12 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 try.cfg))
 \@neuripsabovecaptionskip=\skip53
 \@neuripsbelowcaptionskip=\skip54
-
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.
-sty
-Package: lineno 2026/03/08 line numbers on paragraphs v5.9
-
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etool
-box.sty
-Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count287
 )
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvop
-tions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxc
-mds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-)
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvse
-tkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))
-\linenopenalty=\count288
-\output=\toks20
-\linenoprevgraf=\count289
-\linenumbersep=\dimen157
-\linenumberwidth=\dimen158
-\c@linenumber=\count290
-\c@pagewiselinenumber=\count291
-\c@LN@truepage=\count292
-\c@internallinenumber=\count293
-\c@internallinenumbers=\count294
-\quotelinenumbersep=\dimen159
-\bframerule=\dimen160
-\bframesep=\dimen161
-\bframebox=\box53
-))
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.
 sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks21
-\inpenc@posthook=\toks22
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
 )
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.s
 ty
@@ -139,6 +103,10 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
 
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvse
+tkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys
 \kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
@@ -147,6 +115,10 @@ Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 fescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxc
+mds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\p
 dftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
@@ -175,17 +147,26 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestri
 ng\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvop
+tions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count287
 )
-\c@section@level=\count295
+(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etool
+box.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count288
 )
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\st
 ringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen162
-\Hy@linkcounter=\count296
-\Hy@pagecounter=\count297
+\@linkdim=\dimen157
+\Hy@linkcounter=\count289
+\Hy@pagecounter=\count290
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1en
 c.def
@@ -197,7 +178,7 @@ Now handling font encoding PD1 ...
 alc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count298
+\Hy@SavedSpaceFactor=\count291
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc
 .def
@@ -212,14 +193,14 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count299
+\c@Hy@tempcnt=\count292
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
-\XeTeXLinkMargin=\dimen163
+\XeTeXLinkMargin=\dimen158
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitse
 t.sty
@@ -230,9 +211,9 @@ igintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count300
-\Field@Width=\dimen164
-\Fld@charsize=\dimen165
+\Fld@menulength=\count293
+\Field@Width=\dimen159
+\Fld@charsize=\dimen160
 Package hyperref Info: Hyper figures OFF on input line 6078.
 Package hyperref Info: Link nesting OFF on input line 6083.
 Package hyperref Info: Hyper index ON on input line 6086.
@@ -240,17 +221,17 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count301
-\c@Item=\count302
-\c@Hfootnote=\count303
+\Hy@abspage=\count294
+\c@Item=\count295
+\c@Hfootnote=\count296
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdft
 ex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count304
-\c@bookmark@seq@number=\count305
+\Fld@listcount=\count297
+\c@bookmark@seq@number=\count298
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck
 \rerunfilecheck.sty
@@ -268,28 +249,28 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\bookt
 abs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen166
-\lightrulewidth=\dimen167
-\cmidrulewidth=\dimen168
-\belowrulesep=\dimen169
-\belowbottomsep=\dimen170
-\aboverulesep=\dimen171
-\abovetopsep=\dimen172
-\cmidrulesep=\dimen173
-\cmidrulekern=\dimen174
-\defaultaddspace=\dimen175
-\@cmidla=\count306
-\@cmidlb=\count307
-\@aboverulesep=\dimen176
-\@belowrulesep=\dimen177
-\@thisruleclass=\count308
-\@lastruleclass=\count309
-\@thisrulewidth=\dimen178
+\heavyrulewidth=\dimen161
+\lightrulewidth=\dimen162
+\cmidrulewidth=\dimen163
+\belowrulesep=\dimen164
+\belowbottomsep=\dimen165
+\aboverulesep=\dimen166
+\abovetopsep=\dimen167
+\cmidrulesep=\dimen168
+\cmidrulekern=\dimen169
+\defaultaddspace=\dimen170
+\@cmidla=\count299
+\@cmidlb=\count300
+\@aboverulesep=\dimen171
+\@belowrulesep=\dimen172
+\@thisruleclass=\count301
+\@lastruleclass=\count302
+\@thisrulewidth=\dimen173
 )
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfo
 nts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks23
+\@emptytoks=\toks22
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
@@ -310,18 +291,18 @@ Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/microtype\micr
 otype.sty
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
-\MT@toks=\toks24
-\MT@tempbox=\box54
-\MT@count=\count310
+\MT@toks=\toks23
+\MT@tempbox=\box53
+\MT@count=\count303
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
 LaTeX Info: Redefining \leftprotrusion on input line 1085.
-\MT@prot@toks=\toks25
+\MT@prot@toks=\toks24
 LaTeX Info: Redefining \rightprotrusion on input line 1104.
 LaTeX Info: Redefining \textls on input line 1449.
-\MT@outer@kern=\dimen179
+\MT@outer@kern=\dimen174
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
-\MT@listname@count=\count311
+\MT@listname@count=\count304
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/microtype\micr
 otype-pdftex.def
@@ -383,43 +364,43 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
 )
-\Gin@req@height=\dimen180
-\Gin@req@width=\dimen181
+\Gin@req@height=\dimen175
+\Gin@req@width=\dimen176
 )
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/float\float.st
 y
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count312
-\float@exts=\toks26
-\float@box=\box55
-\@float@everytoks=\toks27
-\@floatcapt=\box56
+\c@float@type=\count305
+\float@exts=\toks25
+\float@box=\box54
+\@float@everytoks=\toks26
+\@floatcapt=\box55
 )
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3ba
 ckend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count313
+\l__color_backend_stack_int=\count306
 ) (music_database.aux)
 \openout1 = `music_database.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -487,18 +468,18 @@ LaTeX Font Info:    ... okay on input line 110.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 110.
+Package hyperref Info: Link coloring OFF on input line 80.
 (music_database.out) (music_database.out)
 \@outlinefile=\write3
 \openout3 = `music_database.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 110.
-Package microtype Info: Applying patch `item' on input line 110.
-Package microtype Info: Applying patch `toc' on input line 110.
-Package microtype Info: Applying patch `eqnum' on input line 110.
-Package microtype Info: Applying patch `footnote' on input line 110.
-Package microtype Info: Applying patch `verbatim' on input line 110.
-LaTeX Info: Redefining \microtypesetup on input line 110.
+LaTeX Info: Redefining \microtypecontext on input line 80.
+Package microtype Info: Applying patch `item' on input line 80.
+Package microtype Info: Applying patch `toc' on input line 80.
+Package microtype Info: Applying patch `eqnum' on input line 80.
+Package microtype Info: Applying patch `footnote' on input line 80.
+Package microtype Info: Applying patch `verbatim' on input line 80.
+LaTeX Info: Redefining \microtypesetup on input line 80.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -517,17 +498,17 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\su
 pp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count314
-\scratchdimen=\dimen182
-\scratchbox=\box57
-\nofMPsegments=\count315
-\nofMParguments=\count316
-\everyMPshowfont=\toks28
-\MPscratchCnt=\count317
-\MPscratchDim=\dimen183
-\MPnumerator=\count318
-\makeMPintoPDFobject=\count319
-\everyMPtoPDFconversion=\toks29
+\scratchcounter=\count307
+\scratchdimen=\dimen177
+\scratchbox=\box56
+\nofMPsegments=\count308
+\nofMParguments=\count309
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count310
+\MPscratchDim=\dimen178
+\MPnumerator=\count311
+\makeMPintoPDFobject=\count312
+\everyMPtoPDFconversion=\toks28
 )
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\e
 pstopdf-base.sty
@@ -544,8 +525,8 @@ mr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 114
-.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
+
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.
 fd
@@ -555,8 +536,8 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 sa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 114
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
+
 
 (C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.
 fd
@@ -570,119 +551,77 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 11
-7.
-
-(C:\Users\Kyler Martinez\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.f
-d
-File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `phv' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-<figures/er_diagram.png, id=55, 2399.96625pt x 1336.995pt>
+<figures/er_diagram.png, id=40, 2399.96625pt x 1312.905pt>
 File: figures/er_diagram.png Graphic file (type png)
 <use figures/er_diagram.png>
-Package pdftex.def Info: figures/er_diagram.png  used on input line 139.
-(pdftex.def)             Requested size: 397.48499pt x 221.43109pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+Package pdftex.def Info: figures/er_diagram.png  used on input line 111.
+(pdftex.def)             Requested size: 397.48499pt x 217.44135pt.
  [1
 
 
 {C:/Users/Kyler Martinez/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/U
 sers/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+<figures/track_normal.png, id=53, 1907.62688pt x 1029.8475pt>
+File: figures/track_normal.png Graphic file (type png)
+<use figures/track_normal.png>
+Package pdftex.def Info: figures/track_normal.png  used on input line 121.
+(pdftex.def)             Requested size: 317.9892pt x 171.66177pt.
 
-Overfull \hbox (6.70581pt too wide) in paragraph at lines 157--160
-[]\T1/cmtt/m/n/10 FROM tracks JOIN track_artist USING (track_id) 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (10.62721pt too wide) in paragraph at lines 150--162
- [][] 
- []
-
-[2
+ [2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.210 \end{document}
-                    
+l.129 \subsection
+                 {Database Performance}
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.129 \subsection
+                 {Database Performance} <./figures/er_diagram.png> <./figures/t
+rack_normal.png>]
+Overfull \hbox (6.70581pt too wide) in paragraph at lines 145--148
+[]\T1/cmtt/m/n/10 FROM tracks JOIN track_artist USING (track_id) 
+ []
+
+
+Overfull \hbox (10.62721pt too wide) in paragraph at lines 138--150
+ [][] 
+ []
+
+[3
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.210 \end{document}
-                     <./figures/er_diagram.png>] (music_database.aux)
+l.198 \end{document}
+                    ] (music_database.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `music_database.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `music_database.out':
-(rerunfilecheck)             Before: FD26A2A29B6AAF8D8A553D30C483CC6D;1707
-(rerunfilecheck)             After:  ECB9F60B38DAFB4EB1243AE507D115AF;717.
+Package rerunfilecheck Info: File `music_database.out' has not changed.
+(rerunfilecheck)             Checksum: EE98F5C88111ED0A4B00C8E918D3A526;1259.
  ) 
 Here is how much of TeX's memory you used:
- 12918 strings out of 467871
- 206857 string characters out of 5413983
- 653542 words of memory out of 5000000
- 41506 multiletter control sequences out of 15000+600000
- 663804 words of font info for 128 fonts, out of 8000000 for 9000
+ 12612 strings out of 467871
+ 201666 string characters out of 5413983
+ 652727 words of memory out of 5000000
+ 41187 multiletter control sequences out of 15000+600000
+ 663718 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,11n,79p,1013b,465s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.3.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.3} has been referenced but does not exist, 
-replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.6} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.5} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.4} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.3} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.2.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
- <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
-00\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/urw/helvetic/uhvr8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKT
-eX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Martinez/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on music_database.pdf (2 pages, 238945 bytes).
+ 75i,11n,79p,1181b,453s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
+i600\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTe
+X/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on music_database.pdf (3 pages, 302223 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 45166 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 135 PDF objects out of 1000 (max. 8388607)
+ 17 named destinations out of 1000 (max. 500000)
+ 43091 words of extra memory for PDF output out of 51595 (max. 10000000)
 
