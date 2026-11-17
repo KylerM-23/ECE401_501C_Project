@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  16 NOV 2026 19:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  17 NOV 2026 05:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,7 +551,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<figures/er_diagram.png, id=40, 2399.96625pt x 1312.905pt>
+<figures/er_diagram.png, id=48, 2399.96625pt x 1312.905pt>
 File: figures/er_diagram.png Graphic file (type png)
 <use figures/er_diagram.png>
 Package pdftex.def Info: figures/er_diagram.png  used on input line 111.
@@ -561,7 +561,7 @@ Package pdftex.def Info: figures/er_diagram.png  used on input line 111.
 
 {C:/Users/Kyler Martinez/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/U
 sers/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-<figures/track_normal.png, id=53, 1907.62688pt x 1029.8475pt>
+<figures/track_normal.png, id=61, 1907.62688pt x 1029.8475pt>
 File: figures/track_normal.png Graphic file (type png)
 <use figures/track_normal.png>
 Package pdftex.def Info: figures/track_normal.png  used on input line 121.
@@ -597,31 +597,39 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.198 \end{document}
-                    ] (music_database.aux)
+l.204 [
+       3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of lea...
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.204 [
+       3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of lea...
+] [4] (music_database.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `music_database.out' has not changed.
-(rerunfilecheck)             Checksum: EE98F5C88111ED0A4B00C8E918D3A526;1259.
+(rerunfilecheck)             Checksum: E9C42C5EB62A081C0684E8D9ECE0468B;1497.
  ) 
 Here is how much of TeX's memory you used:
- 12612 strings out of 467871
- 201666 string characters out of 5413983
- 652727 words of memory out of 5000000
- 41187 multiletter control sequences out of 15000+600000
- 663718 words of font info for 144 fonts, out of 8000000 for 9000
+ 12636 strings out of 467871
+ 201899 string characters out of 5413983
+ 652770 words of memory out of 5000000
+ 41189 multiletter control sequences out of 15000+600000
+ 664593 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1181b,453s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1258b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
 i600\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTe
 X/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on music_database.pdf (3 pages, 302223 bytes).
+Output written on music_database.pdf (4 pages, 307037 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
- 43091 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 151 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
+ 43107 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -96,7 +96,7 @@ Section explaining the dataset.
 
 
 \subsection{Other Work}
-
+Lit Review
 
 
 
@@ -106,7 +106,7 @@ The original dataset was used as the baseline schema with no normalization and r
 \subsection{E-R Diagram}
 The database can be divided into three sections, the tracks, the users and roles, and the wrapped. Each of these have a set of tables and their relationships are visible in Figure~\ref{ER_diagram}. The wrapped result can be viewed as a relationship between the user and an abstract entity for the listening records, tracks, and users who have listened to a song (listener). Users can have N roles that can have M permissions ranging from submitting tracks to be added, adding listens to the database, and finally makign direct changes to the database. Artists have a special relationship with the \textit{artist\_submission} entity that is a weak entity that will store new tracks temporarily until the upload is approved by an admin. The \textit{tracks} entity is divided across multiple relations in the diagram due to attempts to improve the performance of the database and all these relations together form all the necessary data to identify a track and be used for aggregation for the wrapped.
 
-\begin{figure}[t]
+\begin{figure}
 	\centering
   	\includegraphics[width=1.0\textwidth]{figures/er_diagram.png}
 	\caption{E-R Diagram of Music Streaming Database}
@@ -116,22 +116,22 @@ The database can be divided into three sections, the tracks, the users and roles
 \subsection{Database Normalization}
 To improve the structure of the database, the \textit{tracks} table needed to be separated into multiple because all of the track attributes would be retrieved for every query. Features such as measures of the exact sound is not necessary for everyday function and will only be used in stat aggregations and taste profile generation and are generally unused in a query for a track. These attributes are treated as a composite attribute \textit{track\_attributes} and are stored in a separate relation of the same name. Tracks can have multiple genres and artists attributed to them and add a redundant entry to the \textit{track} table for each artist and genre. These attributes were treated as multi-valued attributes and were split into their own tables to reduce data redundancy. These changes are illustrated in Figure~\ref{tracks_normal}. The artists of each track were stored in a semi-structured format where each artist was semi-colon separated and this data needed to be split into different entries in the table to be easily queried. The change avoided the need to check the artist strings for the desired artist substring.
 
-\begin{figure}[t]
+\begin{figure}
 	\centering
   	\includegraphics[width=0.8\textwidth]{figures/track_normal.png}
-	\caption{Normalized Tracks Relation}
+	\caption{Normalized Tracks Relations}
 	\label{tracks_normal}
 \end{figure}
 
 \subsection{Indexing}
-Hi
+There were not many oppurtunies for adding indexes to the database because most of the queries would search using the primary keys while the other attributes were returned. However, there was one...//Return Here
 
 \subsection{Database Performance}
-Hello
+To gauge the performance of the database, a simple query, detailed in Table~\ref{database_query}, was executed to return all tracks and artist names by the band AC/DC. The execution time seen in Table~\ref{database_execution} are the average of 100 executions. For the simplest database structure, the execution time was on average 9.8ms to complete the request. The execution time was found once again when the schema was modified to have the track attributes stored as a separate table to reduce the amount of data accessed when performing queries. When performing the same query but with the modified database we found that the execution time was 5.4 ms, a 45\% improvement. Finally, we fully normalized the database, separating the genre and artists into their own tables to reduce data redundancy and simplify data access. As a result, we needed to modify the query to join the \textit{track} and \textit{track\_artist} tables to gather all the required information. When we did this the execution time for this simple query was 4.0ms, a 59\% improvement overall. Ultimately this has shown that the normalization process is helpful in not only reducing the amount of datastored but the performance as well. 
 
 {
-\linespread{1.15}\selectfont
-\begin{table}[H]
+\linespread{1.25}\selectfont
+\begin{table}
 \caption{Simple SQL Queries}
 \label{database_query}
 \centering
@@ -150,6 +150,29 @@ Hello
 \end{table}
 }
 
+{
+\linespread{1.25}\selectfont
+\begin{table}
+\caption{Schema Performance}
+\label{database_execution}
+\centering
+\begin{tabular}{p{3.0cm} p{2.5cm} p{2.5cm}}
+  \hline
+  Schema Design & Execution Time & Improvement\\
+  \hline
+  Original Dataset & 9.8 ms & -\\
+  \hline
+  Separated Features  & 5.4 ms &  45\%\\
+  \hline
+  Normalized & 4.0 ms & 59\%\\
+  \hline
+\end{tabular}
+\end{table}
+}
+
+\section{Future Work}
+\subsection{Database Design}
+Some areas that could be explored is converting the structured features of the genre into a semi-structured data format like JSON. The artists were originally in a semi-colon separated structure which may have hindered performance because the artist of a song is a commonly queried feature. However, the genre is not queried as often and would be an area to reduce on data redundancy at the cost of some additional processing to query by genre.
 
 
 \section*{References}
