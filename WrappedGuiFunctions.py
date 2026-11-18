@@ -101,7 +101,7 @@ def update_wrapped(root, label, wrapped_dictionary):
     #create updating loop to change which of the small wraps is being displayed
     root.after(30000, update_wrapped, root, label, wrapped_dictionary)
     
-def final_summary(root, wrapped_attributes, num_users):
+def final_summary(root, wrapped_attributes, user_name, num_users):
     wrapped_dictionary = {
         "top_artists": [None, None, None],
         "top_songs" : [None, None, None],
@@ -118,7 +118,7 @@ def final_summary(root, wrapped_attributes, num_users):
     main_frame.columnconfigure(0, weight=1, uniform="side_by_side")
     main_frame.columnconfigure(1, weight=1, uniform="side_by_side")
 
-    welcome_lb = tk.Label(main_frame, text="Welcome To Music Wrapped: 2026", font = TOTAL_FONT)
+    welcome_lb = tk.Label(main_frame, text=f"{user_name} Welcome To Music Wrapped: 2026", font = TOTAL_FONT)
     welcome_lb.grid(row = 0, column = 0, columnspan = 2, padx=PADX, pady=PADY)
     
     #TOP TRACKS

@@ -15,6 +15,14 @@ def display_wrapped(cursor, user_id, user_len):
             """
     json_strings = exeute_query(cursor, query, print_query = False) #get the json string from the user_wrap table
     json_string = json_strings[0][0]
+    
+    query = f"""
+            SELECT name
+            FROM users
+            WHERE ID = {user_id}
+            """
+    user_names = exeute_query(cursor, query, print_query = False) #get the json string from the user_wrap table
+    user_name = user_names[0][0]
 
     wrapped_attributes = json.loads(json_string) # Convert the JSON string into a Python list of dictionaries
 
@@ -28,7 +36,7 @@ def display_wrapped(cursor, user_id, user_len):
     root.rowconfigure(0, weight=1)
     
     GUI.rainbow_bg(root, random.randint(1, 5000))
-    GUI.final_summary(root, wrapped_attributes, user_len)
+    GUI.final_summary(root, wrapped_attributes, user_name, user_len)
 
     root.mainloop()
 
