@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  17 NOV 2026 05:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.11)  19 NOV 2026 15:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -583,12 +583,12 @@ s been already used, duplicate ignored
 l.129 \subsection
                  {Database Performance} <./figures/er_diagram.png> <./figures/t
 rack_normal.png>]
-Overfull \hbox (6.70581pt too wide) in paragraph at lines 145--148
+Overfull \hbox (6.70581pt too wide) in paragraph at lines 147--150
 []\T1/cmtt/m/n/10 FROM tracks JOIN track_artist USING (track_id) 
  []
 
 
-Overfull \hbox (10.62721pt too wide) in paragraph at lines 138--150
+Overfull \hbox (10.62721pt too wide) in paragraph at lines 140--152
  [][] 
  []
 
@@ -597,14 +597,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.204 [
+l.206 [
        3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of lea...
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.204 [
+l.206 [
        3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of lea...
 ] [4] (music_database.aux)
  ***********
@@ -621,13 +621,13 @@ Here is how much of TeX's memory you used:
  41189 multiletter control sequences out of 15000+600000
  664593 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1258b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1259b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Kyler Martinez\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
 i600\ectt1000.pk><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/urw/times/utmb8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Programs/MiKTe
 X/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Kyler Martinez/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on music_database.pdf (4 pages, 307037 bytes).
+Output written on music_database.pdf (4 pages, 307087 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  21 named destinations out of 1000 (max. 500000)

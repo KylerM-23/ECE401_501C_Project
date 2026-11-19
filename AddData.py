@@ -1,6 +1,7 @@
 import sqlite3
 from DBFunctions import *
 import random
+import pandas as pd
 
 def generate_userID(cursor, uID):
     if uID != None:	#Programmer has overriden the ID generation
@@ -16,7 +17,7 @@ def generate_userID(cursor, uID):
         
         if len(uID_check) == 0:
             return uID_temp
-        elif counter == 1000:	#way to escape the loop
+        elif counter == 2000:	#way to escape the loop
             return -1
         counter+=1
     
@@ -54,7 +55,6 @@ def create_artist_accounts(cursor):
     
     for artist in all_artists:
         addArtist(cursor, artist[0])
-    
 
 def add_random_users(cursor, num_users):
     users = []
@@ -85,7 +85,23 @@ def add_random_users(cursor, num_users):
                     fav = int(random.uniform(0,1.99))
                     addListen(cursor, t_id[0], uID, random.randint(1, 200), fav)
         
+def load_team_data(cursor, file):
+    df = pd.read_csv(file)
+    
+    user_id = []
+    user_name = []
+    
+    listens = []
+    
+    for row in df.itertuples():
+        if int(row.User_ID) not in user_id:
+            addUser(cursor, row.User_Name, uID = int(row.User_ID))
+            user_id.append(int(row.User_ID))
 
+        addListen(cursor, row.track_id, int(row.User_ID), int(row.Listens), int(row.Fav))
+    
+    return
+    
 if __name__ == "__main__":
     
     db = sqlite3.connect("music.db") #Open/create database file
@@ -95,15 +111,8 @@ if __name__ == "__main__":
     create_artist_accounts(cursor)
 
     add_random_users(cursor, 200)
-
-    addUser(cursor, "Kyler", uID = 23)
-    addListen(cursor, find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
-    addListen(cursor, find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
-    addListen(cursor, find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1, 1)
-    addListen(cursor, find_track_ID(cursor, artist_name = 'Linkin Park', track_name = "Papercut"), 23, 1, 1)
-    addListen(cursor, find_track_ID(cursor, album_name = 'Arrival', track_name = "Dancing Queen"), 23, 1, 0)
-    addListen(cursor, find_track_ID(cursor, artist_name = 'Korn', track_name = "Freak On a Leash"), 23, 1, 1)
-
-
+    
+    load_team_data(cursor, "Data/User_Wrapped.csv")
+        
     db.commit()
     db.close()

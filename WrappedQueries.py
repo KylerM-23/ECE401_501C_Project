@@ -169,7 +169,6 @@ def create_wrapped_json_users(cursor):
     cursor.execute(f"""
         SELECT DISTINCT user_id
         FROM listen
-        WHERE user_id > 100
         """)
 
     users = cursor.fetchall()   # (track_id, track_name, artists, listen_count)

@@ -51,6 +51,11 @@ if __name__ == "__main__":
     
     users = exeute_query(cursor, query, print_query = False)
     
-    user_id = random.choice(users)
-    
-    display_wrapped(cursor, user_id[0], len(user_id))
+    result = input("Press Enter for a random user, or type in a specific ID ")
+    if (result != ""):
+        u_id = int(result)
+    else:
+        user_id = random.choice(users)
+        u_id = user_id[0]
+
+    display_wrapped(cursor, u_id, len(users))

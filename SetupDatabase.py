@@ -34,15 +34,8 @@ if __name__ == "__main__":
         cursor = db.cursor()   #Create a cursor object to execute SQL commands
         
         Data.create_artist_accounts(cursor)
-        Data.add_random_users(cursor, 200)
-
-        Data.addUser(cursor, "Kyler", uID = 23)
-        Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Linkin Park', track_name = "Papercut"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, album_name = 'Arrival', track_name = "Dancing Queen"), 23, 1, 0)
-        Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Korn', track_name = "Freak On a Leash"), 23, 1, 1)
+        Data.add_random_users(cursor, 100)
+        Data.load_team_data(cursor, "Data/User_Wrapped.csv")
 
         db.commit()
         db.close()
@@ -60,7 +53,6 @@ if __name__ == "__main__":
         delete = 1
 
     finally:
-        db.close()
 
         if delete == 1:
             os.remove("music.db")

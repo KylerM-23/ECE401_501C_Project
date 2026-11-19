@@ -35,7 +35,7 @@ try:
             WHERE artist = "AC/DC"
             """
     
-    loop = 1000*2
+    loop = 1000
     
     sum_ = 0
     
