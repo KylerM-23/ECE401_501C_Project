@@ -38,26 +38,22 @@ try:
     cursor = [db[0].cursor(), db[1].cursor()] 					#Create a cursor object to execute SQL commands
     
     query = """
-            SELECT artists, track_name
+            SELECT track_id
             FROM songs
-            WHERE artists = "AC/DC"
+            WHERE track_name = "Highway To Hell" AND album_name = "Highway To Hell"
             """
-    for i in range(2):
-        if (i == 0):
-            load_data(db[0], "Data/dataset.csv")
-        else:
-            load_data_small(db[1], "Data/dataset.csv")
-        
+    sum_ = 0
+    for i in range(100):
+        load_data(db[0], "Data/dataset.csv")
+
         start_time = time.perf_counter_ns()
 
-        end_time = execute_query(cursor[i], query, display_results = False, display_query = (i == 0), return_time = True)
+        end_time = execute_query(cursor[0], query, display_results = False, display_query = (i == 0), return_time = True)
 
-        if (i == 0):
-            print("Full Dataset\t", (end_time - start_time) / 1000 /1000, 'ms')
-        if (i == 1):
-            print("Partial Dataset\t", (end_time - start_time) / 1000 /1000, 'ms')
-
-        db[i].commit()	#save changes to DB
+        sum_ += (end_time - start_time) / 1000 /1000
+            
+    print("Full Dataset\t", (sum_) / 100, 'ms')
+    db[0].commit()	#save changes to DB
 
 except sqlite3.Error as e:
     print(f"An error occurred: {e}")
