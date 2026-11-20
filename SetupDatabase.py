@@ -37,6 +37,30 @@ if __name__ == "__main__":
         Data.add_random_users(cursor, 200)
 
         Data.addUser(cursor, "Kyler", uID = 23)
+        Data.addUser(cursor, "Aiden", uID = 24)
+        Data.addUser(cursor, "Levi", uID = 25)
+
+        Data.addRoles(cursor, "Listener", rID = 0)
+        Data.addRoles(cursor, "Artist", rID = 1)
+        Data.addRoles(cursor, "Admin", rID = 2)
+
+        Data.addPermissions(cursor, "Stream music", pID = 0)
+        Data.addPermissions(cursor, "Upload music", pID = 1)
+        Data.addPermissions(cursor, "Approve upload", pID = 2)
+        Data.addPermissions(cursor, "Delete music", pID = 3)
+
+        Data.addRolesToUsers(cursor, uID = 23, rID = 2)
+        Data.addRolesToUsers(cursor, uID = 24, rID = 0)
+        Data.addRolesToUsers(cursor, uID = 25, rID = 1)
+
+        Data.addPermissionsToRoles(cursor, rID = 0, pID = 0)
+        Data.addPermissionsToRoles(cursor, rID = 1, pID = 0)
+        Data.addPermissionsToRoles(cursor, rID = 1, pID = 1)
+        Data.addPermissionsToRoles(cursor, rID = 2, pID = 0)
+        Data.addPermissionsToRoles(cursor, rID = 2, pID = 1)
+        Data.addPermissionsToRoles(cursor, rID = 2, pID = 2)
+        Data.addPermissionsToRoles(cursor, rID = 2, pID = 3)
+
         Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
         Data.addListen(cursor, Data.find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
         Data.addListen(cursor, Data.find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1, 1)

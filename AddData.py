@@ -84,7 +84,43 @@ def add_random_users(cursor, num_users):
                 if (int(random.uniform(0,1.99)) == 1):
                     fav = int(random.uniform(0,1.99))
                     addListen(cursor, t_id[0], uID, random.randint(1, 200), fav)
-        
+
+def addRoles(cursor, rName, rID):
+    query = f"""
+            INSERT INTO roles (ID, Name)
+                VALUES 	(?, ?);
+            """
+    cursor.execute(query, (rID, rName))
+
+    return
+
+def addPermissions(cursor, pName, pID):
+    query = f"""
+            INSERT INTO permissions (ID, Name)
+                VALUES 	(?, ?);
+            """
+    cursor.execute(query, (pID, pName))
+    
+    return
+
+def addRolesToUsers(cursor, uID, rID):
+    query = f"""
+            INSERT INTO user_roles (user_id, role_id)
+                VALUES 	(?, ?);
+            """
+    cursor.execute(query, (uID, rID))
+    
+    return
+
+def addPermissionsToRoles(cursor, rID, pID):
+    query = f"""
+            INSERT INTO roles_permissions (role_id, permission_id)
+                VALUES (?, ?);
+            """
+
+    cursor.execute(query, (rID, pID))
+
+    return
 
 if __name__ == "__main__":
     

@@ -114,7 +114,7 @@ def create_tables(cursor):
 
     cursor.execute(
         '''
-        CREATE TABLE role_permissions (
+        CREATE TABLE roles_permissions (
             role_id INTEGER NOT NULL,
             permission_id INTEGER NOT NULL,
 
