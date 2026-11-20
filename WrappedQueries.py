@@ -39,10 +39,18 @@ def get_total_songs(cursor, user_id):
 # Total Minutes Per User
 def get_total_minutes(cursor, user_id):
     cursor.execute("""
-        SELECT SUM(t.duration_ms) / 60000.0
+        SELECT
+          t.track_id,
+          t.track_name,
+          COUNT(*)                             AS times_listened,
+          t.duration_ms / 60000.0              AS track_minutes,
+          COUNT(*) * t.duration_ms / 60000.0   AS total_minutes
         FROM listen l JOIN tracks t ON l.track_id = t.track_id
-        WHERE l.user_id = ?;
+        WHERE l.user_id = ?
+        GROUP BY t.track_id, t.track_name, t.duration_ms
+        ORDER BY total_minutes DESC;
         """, (user_id,))
+        
 
     total_minutes = cursor.fetchone()[0]
     return total_minutes if total_minutes is not None else 0
@@ -169,7 +177,6 @@ def create_wrapped_json_users(cursor):
     cursor.execute(f"""
         SELECT DISTINCT user_id
         FROM listen
-        WHERE user_id > 100
         """)
 
     users = cursor.fetchall()   # (track_id, track_name, artists, listen_count)

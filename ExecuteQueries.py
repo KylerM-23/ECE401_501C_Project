@@ -49,9 +49,9 @@ try:
     
     
     query = """
-            SELECT artist
-            FROM listen JOIN tracks USING (track_id) JOIN track_artist USING (track_id)
-            WHERE user_id = 23
+            SELECT track_id
+            FROM tracks
+            WHERE track_name = "Highway To Hell" AND album_name = "Highway To Hell"
             """
     
     
