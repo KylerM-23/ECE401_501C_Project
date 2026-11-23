@@ -124,17 +124,17 @@ To improve the structure of the database, the \textit{tracks} table needed to be
 \end{figure}
 
 \subsection{Indexing}
-There were not many oppurtunies for adding indexes to the database because most of the queries would search using the primary keys while the other attributes were returned. However, there was one...//Return Here
+There were not many oppurtunies for adding indexes to the database because most of the queries would search using the primary keys while the other attributes were returned. However, one instance where indexes would prove useful, users searching for a track by its name and album. Users are likely to search for a track uses paramters such as these unless they are a devleoper or high level user of the database where the \textit{track\_id} may be more convient. To improve these queries, an index {\textit{track\_name}, \textit{album\_name}} was created and added to the \textit{tracks} and the \textit{artist\_submission} schemas.
 
 \subsection{Database Performance}
 To gauge the performance of the database, a simple query, detailed in Table~\ref{database_query}, was executed to return all tracks and artist names by the band AC/DC. The execution time seen in Table~\ref{database_execution} are the average of 100 executions. For the simplest database structure, the execution time was on average 9.8ms to complete the request. The execution time was found once again when the schema was modified to have the track attributes stored as a separate table to reduce the amount of data accessed when performing queries. When performing the same query but with the modified database we found that the execution time was 5.4 ms, a 45\% improvement. Finally, we fully normalized the database, separating the genre and artists into their own tables to reduce data redundancy and simplify data access. As a result, we needed to modify the query to join the \textit{track} and \textit{track\_artist} tables to gather all the required information. When we did this the execution time for this simple query was 4.0ms, a 59\% improvement overall. Ultimately this has shown that the normalization process is helpful in not only reducing the amount of data stored but the performance as well. 
 
-//Add section to show performance increase due to indexing.
+To determine the impact the index has on query performance, another query was used, detailed in Table~\ref{index_query} which will find the \textit{track\_id} given the album and track name. This query was executed 100 times with the execution time found in Table~\ref{index_execution}. The baseline execution time was 21.95 ms which was reduced to 8.94 ms when the database was normalized.  After the index was applied the execution time was reduced to 0.065 ms, a 99\% reduction in execution time. The index has shown to be impactful to the database and has made the execution time for the query negligble.
 
 {
 \linespread{1.25}\selectfont
 \begin{table}
-\caption{Simple SQL Queries}
+\caption{Normalization SQL Queries}
 \label{database_query}
 \centering
 \begin{tabular}{p{5.25cm} p{8.25cm}}
@@ -171,6 +171,45 @@ To gauge the performance of the database, a simple query, detailed in Table~\ref
 \end{tabular}
 \end{table}
 }
+
+{
+\linespread{1.25}\selectfont
+\begin{table}
+\caption{Index SQL Query}
+\label{index_query}
+\centering
+\begin{tabular}{ p{7.5cm}}
+  \hline
+  Query\\
+  \hline
+  \verb|SELECT track_id| \newline
+  \verb|FROM tracks| \newline
+  \verb|WHERE track_name = X and album_name = Y| \\
+  \hline
+\end{tabular}
+\end{table}
+}
+
+{
+\linespread{1.25}\selectfont
+\begin{table}
+\caption{Index Performance}
+\label{index_execution}
+\centering
+\begin{tabular}{p{3.0cm} p{2.5cm} p{2.5cm}}
+  \hline
+  Schema Design & Execution Time & Improvement\\
+  \hline
+  Original Dataset & 21.95 ms & -\\
+  \hline
+  Normalized DB  & 8.94 ms &  59\%\\
+  \hline
+  Index & 0.065 ms & 99\%\\
+  \hline
+\end{tabular}
+\end{table}
+}
+
 
 \section{Future Work}
 \subsection{Database Design}
