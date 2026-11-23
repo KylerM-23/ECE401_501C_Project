@@ -39,44 +39,36 @@ def get_total_songs(cursor, user_id):
 # Total Minutes Per User
 def get_total_minutes(cursor, user_id):
     cursor.execute("""
-        SELECT
-          t.track_id,
-          t.track_name,
-          COUNT(*)                             AS times_listened,
-          t.duration_ms / 60000.0              AS track_minutes,
-          COUNT(*) * t.duration_ms / 60000.0   AS total_minutes
-        FROM listen l JOIN tracks t ON l.track_id = t.track_id
-        WHERE l.user_id = ?
-        GROUP BY t.track_id, t.track_name, t.duration_ms
-        ORDER BY total_minutes DESC;
+        WITH total_mins as (
+        SELECT l.user_id AS uID,
+          l.listen_count * t.duration_ms / 60000.0   AS total_minutes
+        FROM listen l JOIN tracks t ON l.track_id = t.track_id)
+        
+        SELECT SUM(total_minutes) as time
+        FROM total_mins
+        WHERE uID = ?
         """, (user_id,))
         
-
     total_minutes = cursor.fetchone()[0]
     return total_minutes if total_minutes is not None else 0
 
 # Total Top Listener
 def get_top_listening(cursor, user_id):
     cursor.execute("""
-        SELECT user_id, SUM(t.duration_ms) / 60000.0 AS mins
-        FROM listen l JOIN tracks t ON l.track_id = t.track_id
-        GROUP BY user_id
-        ORDER BY mins DESC 
+        WITH total_mins as (
+        SELECT l.user_id AS uID,
+          l.listen_count * t.duration_ms / 60000.0   AS total_minutes
+        FROM listen l JOIN tracks t ON l.track_id = t.track_id)
+        
+        SELECT SUM(total_minutes) as time, uID
+        FROM total_mins
+        GROUP BY uID
+        ORDER BY time DESC 
         LIMIT 1;
         """)
-
-    top_listening = cursor.fetchone()[1]
     
+    top_listening = cursor.fetchone()[0]
     return top_listening if top_listening is not None else 0
-
-# Total Minutes Across All Users
-def get_global_minutes(cursor):
-    cursor.execute("""
-        SELECT SUM(t.duration_ms) / 60000.0
-        FROM listen l JOIN tracks t ON l.track_id = t.track_id;
-        """)
-    global_minutes = cursor.fetchone()[0]
-    return global_minutes if global_minutes is not None else 0
 
 def get_hidden_gem(cursor, user_id):
     # Hidden gem = a track the user loves that few other people know:
@@ -143,16 +135,6 @@ def build_wrapped_json(cursor, user_id):
         })
         
     mins = get_total_minutes(cursor, user_id)
-    
-    if mins:
-        wrapped.append({
-            "type": "Minutes",
-            "mins": mins,
-            "importance": 1
-        })
-        
-    mins = get_total_minutes(cursor, user_id)
-    global_mins = get_global_minutes(cursor)
     
     if mins:
         wrapped.append({

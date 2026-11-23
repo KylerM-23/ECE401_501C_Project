@@ -3,29 +3,22 @@ from DBFunctions import *
 import random
 import pandas as pd
 
-def generate_userID(cursor, uID):
-    if uID != None:	#Programmer has overriden the ID generation
-        return uID
+def addUser(cursor, uName, uID = None, u_Start = 100000, u_End = 999999):
+    if uID == None:	#Programmer has overriden the ID generation
+        ID = random.randint(u_Start, u_End)
+    else:
+        ID = uID
     
-    done = False
+    query = f"""
+            SELECT ID
+            FROM users
+            WHERE ID = {ID}
+            """
     
-    counter = 0
+    user_list = exeute_query(cursor, query, print_query = False)
     
-    while(True):
-        uID_temp = random.randint(100000, 999999)
-        uID_check = exeute_query(cursor, f"""SELECT ID FROM users WHERE ID = {uID_temp};""")
-        
-        if len(uID_check) == 0:
-            return uID_temp
-        elif counter == 2000:	#way to escape the loop
-            return -1
-        counter+=1
-    
-
-def addUser(cursor, uName, uID = None):
-    ID = generate_userID(cursor, uID)
-    if(ID == -1):
-        return
+    if len(user_list) != 0: #don't add new user if it's there
+        return ID
         
     query = f"""
         INSERT INTO users (ID, name)
@@ -37,7 +30,7 @@ def addUser(cursor, uName, uID = None):
     return ID
 
 def addArtist(cursor, aName):
-    return addUser(cursor, aName)
+    return addUser(cursor, aName, u_Start = 10000, u_End = 99999)
 
 def addListen(cursor, tID, uID, listensNum, fav):
     if tID is None:
@@ -56,13 +49,13 @@ def create_artist_accounts(cursor):
     for artist in all_artists:
         addArtist(cursor, artist[0])
 
-def add_random_users(cursor, num_users):
+def add_random_users(cursor, num_users, max_artist = 100, max_listen = 200):
     users = []
     
     all_artists = get_artists(cursor)
     
     for user in range(0, num_users):
-        random_artist_num = random.randint(1, 20)		#covers people who listen to a few artists to the super fan
+        random_artist_num = random.randint(1, max_artist)		#covers people who listen to a few artists to the super fan
         
         uID = addUser(cursor, f"BOT{user}")	#add n number of users
         
@@ -83,7 +76,7 @@ def add_random_users(cursor, num_users):
             for t_id in tracks:
                 if (int(random.uniform(0,1.99)) == 1):
                     fav = int(random.uniform(0,1.99))
-                    addListen(cursor, t_id[0], uID, random.randint(1, 200), fav)
+                    addListen(cursor, t_id[0], uID, random.randint(1, max_listen), fav)
 
 def addRoles(cursor, rName, rID):
     query = f"""

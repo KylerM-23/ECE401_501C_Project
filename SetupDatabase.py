@@ -12,6 +12,7 @@ if __name__ == "__main__":
         if os.path.isfile("music.db"):
             os.remove("music.db")
             
+        print("Loading the Original Dataset")
         db = sqlite3.connect("music.db") #Open/create database file
         cursor = db.cursor()   #Create a cursor object to execute SQL commands
 
@@ -21,6 +22,7 @@ if __name__ == "__main__":
         #SQLITE does not allow for tables to add new constraints for primary keys
         #Need to recreate the tables and add constraints. :(
         
+        print("Creating New Database")
         CDB.create_tables(cursor)
         CDB.separate_track_artists(cursor)
         CDB.fill_track_tables(cursor)
@@ -33,13 +35,15 @@ if __name__ == "__main__":
         db = sqlite3.connect("music.db") #Open/create database file
         cursor = db.cursor()   #Create a cursor object to execute SQL commands
         
+        print("Creating Artist & User Accounts")
         Data.create_artist_accounts(cursor)
-        Data.add_random_users(cursor, 200)
+        Data.add_random_users(cursor, 1000)
 
         Data.addUser(cursor, "Kyler", uID = 23)
         Data.addUser(cursor, "Aiden", uID = 24)
         Data.addUser(cursor, "Levi", uID = 25)
 
+        print("Roles & Permissions")
         Data.addRoles(cursor, "Listener", rID = 0)
         Data.addRoles(cursor, "Artist", rID = 1)
         Data.addRoles(cursor, "Admin", rID = 2)
@@ -61,18 +65,12 @@ if __name__ == "__main__":
         Data.addPermissionsToRoles(cursor, rID = 2, pID = 2)
         Data.addPermissionsToRoles(cursor, rID = 2, pID = 3)
 
-        Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Sabaton', track_name = "The Attack of the Dead Men"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, album_name = 'Random Access Memories', track_name = "Instant Crush (feat. Julian Casablancas)"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, track_name = "Forgot About Dre"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Linkin Park', track_name = "Papercut"), 23, 1, 1)
-        Data.addListen(cursor, Data.find_track_ID(cursor, album_name = 'Arrival', track_name = "Dancing Queen"), 23, 1, 0)
-        Data.addListen(cursor, Data.find_track_ID(cursor, artist_name = 'Korn', track_name = "Freak On a Leash"), 23, 1, 1)
-        Data.add_random_users(cursor, 100)
         Data.load_team_data(cursor, "Data/User_Wrapped.csv")
 
         db.commit()
         db.close()
         
+        print("Creating User Wraps")
         db = sqlite3.connect("music.db") #Open/create database file
         cursor = db.cursor()   #Create a cursor object to execute SQL commands
         
@@ -82,6 +80,7 @@ if __name__ == "__main__":
         db.close()
         
     except sqlite3.Error as e:
+        db.close()
         print(f"An error occurred: {e}")
         delete = 1
 
