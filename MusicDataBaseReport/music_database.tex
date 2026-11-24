@@ -1,3 +1,4 @@
+\PassOptionsToPackage{numbers, compress}{natbib}
 \documentclass{article}
 
 % if you need to pass options to natbib, use, e.g.:
@@ -25,7 +26,10 @@
 %  \usepackage[education]{neurips_2026}
 
 
-  \usepackage[main, final]{neurips_2026}
+\usepackage[main, final]{neurips_2026}
+\usepackage{lineno}
+\linenumbers
+
 
 
 % to avoid loading the natbib package, add option nonatbib:
@@ -91,13 +95,10 @@ Hook paragraphs
 
 
 \subsection{Dataset}
-Section explaining the dataset.
-
-
+For our database we used a dataset composed of data from the Spotify database using their API. \footnote{The original dataset can be found at: \url{https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset}} The dataset has a \textit{track\_id} associated to every track along with general track information such as the track name, album, and artists on the track. There are additional features in the dataset such as whether the track contains explicit language, its  associated genres, and features that describe the sound itself like the loudness which are used in creating a taste profile for a user. These features will be useful in creating the wrapped and producing other useful statistics to the users.
 
 \subsection{Other Work}
-Lit Review
-
+Relational databases use structured data that cn be organzied into tables that can be queried. However, problems arise when the data stored is expected to change and has the possibility to be populated for only a subset of the population. Semi-structured data can address this problem and provide a way for each user to have a set of data associated to them but its contents stored slightly differently. Semi-structured data is useful to address the wrapped feature of the database and store the statistics of the users listening data and vary it without changing the entire schema. Semi-structured data has the benefit of reducing the data stored and possibly improving the execution time of queries without the need of spreading the data across multiple columns and potentially tables \cite{eldahshan2022}.
 
 
 \section{Database Design}
@@ -132,7 +133,7 @@ To gauge the performance of the database, a simple query, detailed in Table~\ref
 To determine the impact the index has on query performance, another query was used, detailed in Table~\ref{index_query} which will find the \textit{track\_id} given the album and track name. This query was executed 100 times with the execution time found in Table~\ref{index_execution}. The baseline execution time was 21.95 ms which was reduced to 8.94 ms when the database was normalized.  After the index was applied the execution time was reduced to 0.065 ms, a 99\% reduction in execution time. The index has shown to be impactful to the database and has made the execution time for the query negligble.
 
 {
-\linespread{1.25}\selectfont
+\linespread{1.1}\selectfont
 \begin{table}
 \caption{Normalization SQL Queries}
 \label{database_query}
@@ -153,7 +154,7 @@ To determine the impact the index has on query performance, another query was us
 }
 
 {
-\linespread{1.25}\selectfont
+\linespread{1.1}\selectfont
 \begin{table}
 \caption{Schema Performance}
 \label{database_execution}
@@ -173,7 +174,7 @@ To determine the impact the index has on query performance, another query was us
 }
 
 {
-\linespread{1.25}\selectfont
+\linespread{1.1}\selectfont
 \begin{table}
 \caption{Index SQL Query}
 \label{index_query}
@@ -191,7 +192,7 @@ To determine the impact the index has on query performance, another query was us
 }
 
 {
-\linespread{1.25}\selectfont
+\linespread{1.1}\selectfont
 \begin{table}
 \caption{Index Performance}
 \label{index_execution}
@@ -211,40 +212,41 @@ To determine the impact the index has on query performance, another query was us
 }
 
 
-\section{Future Work}
-\subsection{Database Design}
+\section{Conclusion}
+
+\subsection{Results \& Analysis}
+.
+
+\subsection{Future Work}
 Some areas that could be explored is converting the structured features of the genre into a semi-structured data format like JSON. The artists were originally in a semi-colon separated structure which may have hindered performance because the artist of a song is a commonly queried feature. However, the genre is not queried as often and would be an area to reduce on data redundancy at the cost of some additional processing to query by genre.
-
-
-\section*{References}
-
-
-References follow the acknowledgments in the camera-ready paper. Use unnumbered first-level heading for
-the references. Any choice of citation style is acceptable as long as you are
-consistent. It is permissible to reduce the font size to \verb+small+ (9 point)
-when listing the references.
-Note that the Reference section does not count towards the page limit.
-\medskip
-
 
 {
 \small
 
+\begin{thebibliography}{9}
 
-[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms for
-connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and T.K.\ Leen
-(eds.), {\it Advances in Neural Information Processing Systems 7},
-pp.\ 609--616. Cambridge, MA: MIT Press.
+\bibitem{sandhu1996}
+R. S. Sandhu, E. J. Coyne, H. L. Feinstein and C. E. Youman, “Role-based access control models,” 1996
 
-
-[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS: Exploring
-  Realistic Neural Models with the GEneral NEural SImulation System.}  New York:
-TELOS/Springer--Verlag.
+\bibitem{stavrovsky2025}
+M. E. Stavrovsky, T. A. Nosenko, E. S. Postnikova, A. V. Ragutkin, I. M. Sidorov and M. I. Sidorov, “Optimizing SQL Queries to Improve the Performance of Information Systems,” 2025
 
 
-[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of learning and
-recall at excitatory recurrent synapses and cholinergic modulation in rat
-hippocampal region CA3. {\it Journal of Neuroscience} {\bf 15}(7):5249-5262.
+\bibitem{kumar2017}
+K. Kumar and S. K. Azad, “Database normalization design pattern,” 2017
+
+\bibitem{eldahshan2022}
+K. ElDahshan et al., “Handling Big Data in relational database management systems,” Tech Science Press, 2022
+
+\bibitem{abbas2021}
+A. Abbas and K. Ahmad, “An Integrated Indexing Approach to Improve Query Processing,” 2021
+
+\bibitem{musicdistribute}
+MusicDistribute, “How to upload music to Spotify in 2026: Distribution guide 2026,” Music Distribution, https://musicdistribute.com/guides/how-to-upload-music-to-spotify/ 2026
+
+
+\end{thebibliography}
+
 }
 
 
