@@ -41,4 +41,7 @@ This repository has a database for a music streaming database similar to those u
 
 ## Using the DataBase
 Running WrappedGUI.py will aspect to input a specific user ID if you know one (23, 24, 25 are toy examples) or you can leave it blank and press enter to view a random user. An example interaction with the database is seen below.
+<img src="./Repo_IMG/terminal.png" width="50%">
+<img src="./Repo_IMG/gui.png" width="50%">
+
   
