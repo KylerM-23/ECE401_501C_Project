@@ -87,18 +87,21 @@
 \maketitle
 
 \begin{abstract}
-ABSTRACT
+//ABSTRACT
 \end{abstract}
 
 \section{Introduction}
-Hook paragraphs
+//Hook paragraphs
 
 
 \subsection{Dataset}
 For our database we used a dataset composed of data from the Spotify database using their API. \footnote{The original dataset can be found at: \url{https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset}} The dataset has a \textit{track\_id} associated to every track along with general track information such as the track name, album, and artists on the track. There are additional features in the dataset such as whether the track contains explicit language, its  associated genres, and features that describe the sound itself like the loudness which are used in creating a taste profile for a user. These features will be useful in creating the wrapped and producing other useful statistics to the users.
 
 \subsection{Other Work}
-Relational databases use structured data that cn be organzied into tables that can be queried. However, problems arise when the data stored is expected to change and has the possibility to be populated for only a subset of the population. Semi-structured data can address this problem and provide a way for each user to have a set of data associated to them but its contents stored slightly differently. Semi-structured data is useful to address the wrapped feature of the database and store the statistics of the users listening data and vary it without changing the entire schema. Semi-structured data has the benefit of reducing the data stored and possibly improving the execution time of queries without the need of spreading the data across multiple columns and potentially tables \cite{eldahshan2022}.
+Relational databases use structured data that can be organzied into tables that can be queried. However, problems arise when the data stored is expected to change and has the possibility to be populated for only a subset of the population. Semi-structured data can address this problem and provide a way for each user to have a set of data associated to them but its contents stored slightly differently. Semi-structured data is useful to address the wrapped feature of the database and store the statistics of the users listening data and vary it without changing the entire schema. Semi-structured data has the benefit of reducing the data stored and possibly improving the execution time of queries without the need of spreading the data across multiple columns and potentially tables \cite{eldahshan2022}.
+
+
+//Background on indexes
 
 
 \section{Database Design}
@@ -218,7 +221,8 @@ To determine the impact the index has on query performance, another query was us
 .
 
 \subsection{Future Work}
-Some areas that could be explored is converting the structured features of the genre into a semi-structured data format like JSON. The artists were originally in a semi-colon separated structure which may have hindered performance because the artist of a song is a commonly queried feature. However, the genre is not queried as often and would be an area to reduce on data redundancy at the cost of some additional processing to query by genre.
+\subsubsection{Database Design}
+Some areas that could be explored is converting the structured features of the genre into a semi-structured data format like JSON. The artists were originally in a semi-colon separated structure which may have hindered performance because the artist of a song is a commonly queried feature. However, the genre is not queried as often and would be an area to reduce on data redundancy at the cost of some additional processing to query by genre. Indexes were not fully explored in the experiment and in our research found other index types that could have improved query execution time, however, we were satisfied with out performance and could explore other indexing types with a different database management system (DBMS) if improvements are necessary.
 
 {
 \small
